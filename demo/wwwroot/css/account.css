@@ -1,0 +1,30 @@
+﻿body {
+    background-image: url('/images/furni.png');
+    background-size: cover; /* Scale image to fill the viewport */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Prevent tiling */
+    min-height: 100vh; /* Ensure it covers full viewport height */
+    margin: 0; /* Remove default body margin */
+}
+
+.account-container {
+    
+    background-size: cover;
+    background-position: center;
+    background-repeat: repeat-y;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 2rem 0;
+}
+
+.account-box {
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    max-width: 500px;
+    width: 100%;
+    opacity: 1;
+}
