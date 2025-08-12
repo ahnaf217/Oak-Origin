@@ -1,0 +1,92 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="author" content="Untree.co" />
+	<meta name="description" content="" />
+	<meta name="keywords" content="bootstrap, bootstrap4" />
+	<link rel="shortcut icon" href="~/favicon.png" />
+
+	<title>@ViewData["Title"] - Oak & Origin</title>
+
+	<link href="~/css/bootstrap.min.css" rel="stylesheet" />
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
+	<link href="~/css/tiny-slider.css" rel="stylesheet" />
+	<link rel="stylesheet" href="~/css/style.css" asp-append-version="true" />
+
+	<!-- Admin bashboard-->
+	<!-- Custom fonts for this template-->
+	<link href="~/Dashboard/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+	<link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+		  rel="stylesheet">
+
+	<!-- Custom styles for this template-->
+	<link href="~/Dashboard/css/sb-admin-2.min.css" rel="stylesheet">
+</head>
+<body>
+
+	<!-- Start Header/Navigation -->
+	<nav class="custom-navbar navbar navbar-expand-md navbar-dark bg-dark" aria-label="Furni navigation bar">
+		<div class="container">
+			<a class="navbar-brand" asp-controller="Home" asp-action="Index">Oak & Origin<span>.</span></a>
+
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsFurni" aria-controls="navbarsFurni" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+
+			<div class="collapse navbar-collapse" id="navbarsFurni">
+				<ul class="custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0">
+					<li class="nav-item active">
+						<a class="nav-link" asp-controller="Home" asp-action="Index">Home</a>
+					</li>
+					<li><a class="nav-link" asp-controller="Home" asp-action="shop">Shop</a></li>
+					<li><a class="nav-link" href="about.html">About us</a></li>
+					<li><a class="nav-link" href="services.html">Services</a></li>
+					<li><a class="nav-link" href="blog.html">Blog</a></li>
+					<li><a class="nav-link" href="contact.html">Contact us</a></li>
+				</ul>
+
+				<ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
+					<li><a class="nav-link" asp-controller="Account" asp-action="Profile"><img src="~/images/user.svg" /></a></li>
+					<li><a class="nav-link" asp-controller="Cart" asp-action="Index"><img src="~/images/cart.svg" /></a></li>
+					<partial name="_LoginPartial" />
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<!-- End Header/Navigation -->
+	<!-- Main body -->
+	<main role="main" class="pb-3">
+		@RenderBody()
+	</main>
+
+	<!-- Footer -->
+	
+
+	<!-- Scripts -->
+	<script src="~/js/bootstrap.bundle.min.js"></script>
+	<script src="~/js/tiny-slider.js"></script>
+	<script src="~/js/custom.js"></script>
+
+	<!-- Bootstrap core JavaScript-->
+	<script src="~/Dashboard/vendor/jquery/jquery.min.js"></script>
+	<script src="~/Dashboard/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+	<!-- Core plugin JavaScript-->
+	<script src="~/Dashboard/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+	<!-- Custom scripts for all pages-->
+	<script src="~/Dashboard/js/sb-admin-2.min.js"></script>
+
+	<!-- Page level plugins -->
+	<script src="~/Dashboard/vendor/chart.js/Chart.min.js"></script>
+
+	<!-- Page level custom scripts -->
+	<script src="~/Dashboard/js/demo/chart-area-demo.js"></script>
+	<script src="~/Dashboard/js/demo/chart-pie-demo.js"></script>
+
+	@RenderSection("Scripts", required: false)
+</body>
+</html>
+

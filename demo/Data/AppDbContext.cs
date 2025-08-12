@@ -11,7 +11,7 @@ namespace demo.Data
         {
         }
         
-
+        public DbSet<Product> Products { get; set; }
     }
     
     
