@@ -17,13 +17,52 @@ body {
   font-size: 14px;
   background-color: #eff2f1; }
 
+.btn-login,
+.btn-register {
+    display: inline-block;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+    margin-left: 5px;
+    transition: all 0.3s ease;
+}
+
+/* Login button style */
+.btn-login {
+    margin-left: 57px;
+    background-color: #ffffff;
+    color: #3b5d50;
+    border: 2px solid #ffffff;
+}
+
+    .btn-login:hover {
+        background-color: transparent;
+        color: #ffffff;
+        border-color: #ffffff;
+    }
+
+/* Register button style */
+.btn-register {
+    background-color: #f9bf29;
+    color: #2f2f2f;
+    border: 2px solid #f9bf29;
+}
+
+    .btn-register:hover {
+        background-color: transparent;
+        border-color: #f8b810;
+        color: #f9bf29;
+    }
+
 a {
   text-decoration: none;
   -webkit-transition: .3s all ease;
   -o-transition: .3s all ease;
   transition: .3s all ease;
   color: #2f2f2f;
-  text-decoration: underline; }
+  //text-decoration: underline; }
   a:hover {
     color: #2f2f2f;
     text-decoration: none; }
