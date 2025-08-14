@@ -1,17 +1,26 @@
 using System.Diagnostics;
 using demo.Models;
 using Microsoft.AspNetCore.Mvc;
+using demo.Data;
+using Microsoft.EntityFrameworkCore;
+using demo.ViewModels;
 
 namespace demo.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
+        private AppDbContext _context;
+        public HomeController(ILogger<HomeController> logger, AppDbContext context)
         {
             _logger = logger;
+            _context = context;
         }
+
+        /*public HomeController(ILogger<HomeController> logger)
+        {
+            _logger = logger;
+        }*/
 
         public IActionResult Index()
         {
@@ -23,9 +32,12 @@ namespace demo.Controllers
             return View();
         }
 
-        public IActionResult shop()
+        public async Task<IActionResult> shop()
         {
-            return View();
+            var products = await _context.Products.ToListAsync();
+            var model = new ProductViewModels { Products = products };
+            
+            return View(model);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
