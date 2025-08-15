@@ -18,7 +18,8 @@ body {
   background-color: #eff2f1; }
 
 .btn-login,
-.btn-register {
+.btn-register,
+.btn-logout {
     display: inline-block;
     padding: 8px 16px;
     border-radius: 20px;
@@ -54,6 +55,19 @@ body {
         background-color: transparent;
         border-color: #f8b810;
         color: #f9bf29;
+    }
+
+.btn-logout {
+    margin-left: 57px;
+    background-color: #ffffff;
+    color: #3b5d50;
+    border: 2px solid #ffffff;
+}
+
+    .btn-logout:hover {
+        background-color: transparent;
+        color: #ffffff;
+        border-color: #ffffff;
     }
 
 a {
