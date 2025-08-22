@@ -594,22 +594,23 @@ a {
         font-weight: 600; }
   .blog-section .post-entry:hover .post-thumbnail img, .blog-section .post-entry:focus .post-thumbnail img {
     opacity: .7; }
-/*  -------------------footer-------*/
+/*  -------------------footer-----------------------------------------*/
 .footer-section {
     padding: 80px 0;
-    background: #442a0e;
-    color: #e3dcd2;
+    background: #ffffff;
+    color: #442a0e;
 }
   .footer-section .relative {
     position: relative; }
-  .footer-section a {
-    text-decoration: none;
-    color: #cc8b65;
-    -webkit-transition: .3s all ease;
-    -o-transition: .3s all ease;
-    transition: .3s all ease; }
+    .footer-section a {
+        text-decoration: none;
+        color: #442a0e;
+        -webkit-transition: .3s all ease;
+        -o-transition: .3s all ease;
+        transition: .3s all ease;
+    }
     .footer-section a:hover {
-      color: #dce5e4; }
+      color: #442a0e; }
   .footer-section .subscription-form {
     margin-bottom: 40px;
     position: relative;
@@ -622,7 +623,7 @@ a {
 .footer-section .subscription-form h3 {
     font-size: 18px;
     font-weight: 500;
-    color: #ffffff;
+    color: #442a0e;
 }
     .footer-section .subscription-form .form-control {
       height: 50px;
@@ -663,7 +664,7 @@ a {
     font-size: 32px;
     font-weight: 500;
     text-decoration: none;
-    color: #ffffff;
+    color: #442a0e;
 }
   .footer-section .custom-social li {
     margin: 2px;
@@ -678,9 +679,10 @@ a {
         color: #604a32;
         border-radius: 50%;
     }
-      .footer-section .custom-social li a:hover {
-        background: #3b5d50;
-        color: #ffffff; }
+        .footer-section .custom-social li a:hover {
+            background: #442a0e;
+            color: #ffffff;
+        }
   .footer-section .border-top {
     border-color: #dce5e4; }
     .footer-section .border-top.copyright {
