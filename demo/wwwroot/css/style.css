@@ -133,7 +133,7 @@ a {
         margin-right: 20px; }
 /*-------------------------------- --------------hero----------------------------------------*/
 .hero {
-    background: #442a0e;
+    background: #442a0e; /* Dark brown */
     padding: calc(4rem - 30px) 0 0rem 0;
 }
   @media (min-width: 768px) {
@@ -150,7 +150,7 @@ a {
         max-width: 450px; } }
 .hero h1 {
     font-weight: 700;
-    color: #e3dcd2;
+    color: #e3dcd2; /* Light text */
     margin-bottom: 30px;
     text-shadow: 0 2px 8px rgba(204,139,101,0.08);
 }
@@ -158,9 +158,7 @@ a {
       .hero h1 {
         font-size: 54px; } }
 .hero p {
-    color: rgba(255, 255, 255, 0.5);
-    /*    color: #e3dcd2;*/
-    margin-botom: 30px;
+    color: rgba(255, 255, 255, 0.5); /* Light text */
 }
   .hero .hero-img-wrap {
     position: relative; }
@@ -937,4 +935,53 @@ p.arrival-review span {
 
 .single-new-arrival:hover h4 a {
     color: #e99c2e;
+}
+/*-------------------------------------ABOUT US----------------------------------*/
+/*.about-section {
+    padding: 50px;
+    background-color: #f9f9f9;
+}
+
+    .about-section h1, h2 {
+        color: #333;
+    }
+
+    .about-section p {
+        font-size: 18px;
+        line-height: 1.6;
+    }
+*/
+
+
+/* Hero Section */
+.about-hero {
+    background-color: #3b1d00; /* dark brown */
+    min-height: 40vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Accent Color */
+.accent-text {
+    color: #f7a600; /* orange */
+}
+
+/* Light Background */
+.bg-light-custom {
+    background-color: #f5efe6;
+}
+
+/* Stats Section */
+.stats-section {
+    background-color: #4a2600;
+}
+
+    .stats-section h2 {
+        color: #f7a600;
+        font-weight: bold;
+    }
+
+.bg-dark {
+    background-color: #442a0e !important;
 }
