@@ -988,3 +988,74 @@ p.arrival-review span {
 .bg-dark {
     background-color: #442a0e !important;
 }
+/*--------------------------------------------service-------------------------------*/
+/* Backgrounds */
+.bg-dark-brown {
+    background-color: #3b1d00 !important;
+    color: #fff !important;
+}
+
+.bg-light {
+    background-color: #f5efe6 !important;
+    color: #333 !important;
+}
+
+/* Accent Button */
+.btn-accent {
+    background-color: #f7a600 !important;
+    border-color: #f7a600 !important;
+    color: #fff !important;
+}
+
+    .btn-accent:hover {
+        background-color: #ff9c07 !important;
+        border-color: #ff9c07 !important;
+    }
+
+/* Text Colors */
+.text-light {
+    color: #fff !important;
+}
+
+.text-dark {
+    color: #333 !important;
+}
+.cta-band {
+    background: #4a2600;
+    padding: 100px 20px;
+/*    margin-top: -15px; */
+/*    border-radius: 15px;*/
+    text-align: center;
+}
+
+    .cta-band h2 {
+        font-size: 2.5rem;
+        font-weight: bold;
+    }
+
+    .cta-band p {
+        font-size: 1.2rem;
+    }
+
+.btn-accent {
+    background-color: #f7a600;
+    color: #fff;
+    font-weight: 600;
+}
+
+    .btn-accent:hover {
+        background-color: #d98c00;
+    }
+.custom-muted {
+    color: #3b1d00c7;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    max-width: 760px;
+    margin: 0 auto;
+    text-align: center;
+}
+.custom-text {
+    color: #3b1d00;
+    font-size: 1rem;
+    line-height: 1.5;
+}
