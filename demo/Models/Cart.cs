@@ -10,6 +10,8 @@ namespace demo.Models
 
         public int Qty { get; set; }
 
+        public int total { get; set; }
+
         public Product Product { get; set; }
 
         public string UserId { get; set; }

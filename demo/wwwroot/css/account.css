@@ -1,10 +1,10 @@
 ﻿body {
     background-image: url('/images/furni.png');
-    background-size: cover; /* Scale image to fill the viewport */
-    background-position: center; /* Center the image */
-    background-repeat: no-repeat; /* Prevent tiling */
-    min-height: 100vh; /* Ensure it covers full viewport height */
-    margin: 0; /* Remove default body margin */
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+    min-height: 100vh; 
+    margin: 0; 
 }
 
 .account-container {

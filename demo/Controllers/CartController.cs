@@ -56,7 +56,7 @@ namespace demo.Controllers
             return RedirectToAction("Cart_Index");
         }
 
-        /*[HttpPost]
+        [HttpPost]
         public IActionResult UpdateQuantity(int cartItemId, int quantity, string change)
         {
             var cartItem = _context.Carts
@@ -79,7 +79,7 @@ namespace demo.Controllers
             }
 
             return RedirectToAction("Cart_Index"); // reloads the cart page with new totals*
-        }*/
+        }
 
     }
 }
