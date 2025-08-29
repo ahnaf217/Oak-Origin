@@ -13,7 +13,8 @@ body {
 }
 
 .btn-login,
-.btn-register {
+.btn-register,
+.btn-logout {
     display: inline-block;
     padding: 8px 16px;
     border-radius: 20px;
@@ -52,6 +53,19 @@ body {
         color: #f9bf29;
     }
 
+.btn-logout {
+    margin-left: 57px;
+    background-color: #ffffff;
+    color: #3b5d50;
+    border: 2px solid #ffffff;
+}
+
+    .btn-logout:hover {
+        background-color: transparent;
+        color: #ffffff;
+        border-color: #ffffff;
+    }
+
 a {
     text-decoration: none;
     -webkit-transition: .3s all ease;
@@ -67,10 +81,10 @@ a {
     font-weight: 600; }
 /*  --------------------------------------header---------------------------------------*/
 .custom-navbar {
-    background: #442a0e !important;
-    padding-top: 20px;
-    padding-bottom: 20px;
-}
+  background: #582d0e !important;
+  padding-top: 20px;
+  padding-bottom: 20px; }
+
   .custom-navbar .navbar-brand {
     font-size: 40px;
     font-weight: 600; }
@@ -133,9 +147,9 @@ a {
         margin-right: 20px; }
 /*-------------------------------- --------------hero----------------------------------------*/
 .hero {
-    background: #442a0e; /* Dark brown */
-    padding: calc(4rem - 30px) 0 0rem 0;
-}
+  background: saddlebrown;
+  padding: calc(4rem - 30px) 0 0rem 0; }
+
   @media (min-width: 768px) {
     .hero {
       padding: calc(4rem - 30px) 0 4rem 0; } }
@@ -650,7 +664,7 @@ a {
     z-index: 1;
     right: 0; }
     .footer-section .sofa-img img {
-      max-width: 380px; }
+      max-width: 300px; }
   .footer-section .links-wrap {
     margin-top: 0px; }
     @media (min-width: 992px) {

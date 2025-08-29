@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using demo.Data;
 
@@ -11,9 +12,11 @@ using demo.Data;
 namespace demo.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250815051827_CartModelAdded")]
+    partial class CartModelAdded
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -163,23 +166,18 @@ namespace demo.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("ProductId")
+                    b.Property<string>("ProductId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("ProductId1")
                         .HasColumnType("int");
 
                     b.Property<int>("Qty")
                         .HasColumnType("int");
 
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<int>("total")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("ProductId");
-
-                    b.HasIndex("UserId");
+                    b.HasIndex("ProductId1");
 
                     b.ToTable("Carts");
                 });
@@ -332,17 +330,9 @@ namespace demo.Migrations
                 {
                     b.HasOne("demo.Models.Product", "Product")
                         .WithMany()
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("demo.Models.Users", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId");
+                        .HasForeignKey("ProductId1");
 
                     b.Navigation("Product");
-
-                    b.Navigation("User");
                 });
 #pragma warning restore 612, 618
         }
