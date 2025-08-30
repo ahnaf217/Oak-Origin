@@ -1,4 +1,5 @@
-﻿@model Address
+﻿
+@model Address
 
 @{
     ViewData["Title"] = "Checkout";
@@ -25,14 +26,18 @@
 <div class="container">
 
     <div class="row">
-        <div class="col-md-12">
-
-            @foreach (var address in addresses)
-            {
-                <h5>@address.User.UserName</h5>
-                <p>@address.AddressLine, @address.City @address.State - @address.PinCode</p>
-            }
-        </div>
+        @foreach (var address in addresses)
+        {
+            <div class="col-md-4 mb-2">
+                <div class="card">
+                    <div class="card-body">
+                        <h5>@address.User.UserName</h5>
+                        <p>@address.AddressLine, @address.City @address.State - @address.PinCode</p>
+                        <a asp-controller="Checkout" asp-action="Confirm" asp-route-addressId="@address.Id" class="btn btn-primary">Deliver Here</a>
+            </div>
+                </div>
+            </div>
+        }
     </div>
     <form asp-action="Index">
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
