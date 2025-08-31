@@ -1,0 +1,77 @@
+﻿@model Order
+@{
+    ViewData["Title"] = "Details";
+}
+
+
+<section class="py-5">
+        <div class="container px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="top-status">
+                                <h5>ORDER# @Model.Id</h5>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-body">
+                            <h5>Address:</h5>
+                            <p>@Model.Address.AddressLine @Model.Address.City @Model.Address.State - @Model.Address.PinCode</p>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-body">
+                            <h5>Order Amount:</h5>
+                            <p>$@Model.Amount</p>
+                        </div>
+                    </div>
+
+                <div class="card">
+                    <div class="card-body">
+                        <h5>Status:</h5>
+                        <p>@Model.Status</p>
+                    </div>
+                </div>
+
+                    <div class="card mt-4">
+                        <div class="card-body p-0 table-responsive">
+                            <h4 class="p-3 mb-0">Product Description</h4>
+                            <table class="table mb-0">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Product Image</th>
+                                        <th scope="col">Product Name</th>
+                                        <th scope="col">Unit Price</th>
+                                        <th scope="col">Quantity</th>
+                                        <th scope="col">Total</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach(var orderProduct in Model.OrderProducts)
+                                {
+                                    <tr>
+                                        <th>
+                                            <a asp-controller="Products" asp-action="Details" asp-route-Id="@orderProduct.ProductId">
+                                                <img width="200" src="@orderProduct.Product.Image" alt="@orderProduct.Product.Name">
+                                            </a>
+                                        </th>
+                                        <td>
+                                            <a asp-controller="Products" asp-action="Details" asp-route-Id="@orderProduct.ProductId">@orderProduct.Product.Name</a>
+                                        </td>
+                                        <td>@orderProduct.Price</td>
+                                        <td><strong>@orderProduct.Qty</strong></td>
+                                        <td><strong>$@(orderProduct.Price * orderProduct.Qty)</strong></td>
+                                    </tr>
+                                }
+                            </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>

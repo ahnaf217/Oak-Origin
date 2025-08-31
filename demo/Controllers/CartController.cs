@@ -28,6 +28,12 @@ namespace demo.Controllers
                 .Where(x => x.UserId == currentuser.Id)
                 .ToListAsync();
 
+            decimal totalCost = 0;
+             foreach (var cartItem in cart) {
+                    totalCost += cartItem.Product.Price * cartItem.Qty;
+            }
+             ViewBag.TotalCost = totalCost;
+
             return View(cart);
         }
         public async Task<IActionResult> AddToCart(int productId, int qty = 1)
@@ -56,7 +62,7 @@ namespace demo.Controllers
             return RedirectToAction("Cart_Index");
         }
 
-        [HttpPost]
+        /*[HttpPost]
         public IActionResult UpdateQuantity(int cartItemId, int quantity, string change)
         {
             var cartItem = _context.Carts
@@ -79,7 +85,40 @@ namespace demo.Controllers
             }
 
             return RedirectToAction("Cart_Index"); // reloads the cart page with new totals*
+        }*/
+
+        [HttpPost]
+        public async Task<IActionResult> UpdateCart(List<Cart> CartItems)
+        {
+            var currentuser = await _userManager.GetUserAsync(HttpContext.User);
+
+            foreach (var item in CartItems)
+            {
+                var existing = await _context.Carts
+                    .Include(c => c.Product)
+                    .FirstOrDefaultAsync(c => c.Id == item.Id && c.UserId == currentuser.Id);
+
+                if (existing != null)
+                {
+                    existing.Qty = item.Qty > 0 ? item.Qty : 1; // prevent zero/negative
+                }
+            }
+
+            await _context.SaveChangesAsync();
+
+            // Recalculate total cost
+            var cart = await _context.Carts
+                .Include(x => x.Product)
+                .Where(x => x.UserId == currentuser.Id)
+                .ToListAsync();
+
+            decimal totalCost = cart.Sum(c => c.Product.Price * c.Qty);
+            ViewBag.TotalCost = totalCost;
+
+            return View("Cart_Index", cart);
         }
 
+
     }
+
 }

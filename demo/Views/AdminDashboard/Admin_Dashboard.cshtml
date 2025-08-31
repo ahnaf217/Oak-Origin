@@ -1,5 +1,6 @@
 ﻿﻿@{
-ViewData["Title"] = "Admin Page";
+    ViewData["Title"] = "Admin Page";
+    //Layout = null;
 }
 
 <!-- Page Wrapper -->
@@ -78,6 +79,22 @@ ViewData["Title"] = "Admin Page";
         <div class="sidebar-heading">
             Addons
         </div>
+
+        <li class="nav-item">
+        <a class="nav-link" asp-controller="Products" asp-action="Index">
+            
+            <i class="fas fa-fw fa-cog"></i>
+            <span>Products</span>
+        </a>
+        </li>
+
+        <li class="nav-item">
+        <a class="nav-link" asp-controller="AdminOrders" asp-action="Index">
+            
+            <i class="fas fa-fw fa-cog"></i>
+            <span>Orders</span>
+        </a>
+        </li>
 
         <!-- Nav Item - Pages Collapse Menu -->
         <li class="nav-item">
@@ -309,6 +326,7 @@ ViewData["Title"] = "Admin Page";
                     <div class="topbar-divider d-none d-sm-block"></div>
 
                     <!-- Nav Item - User Information -->
+                    
                     <li class="nav-item dropdown no-arrow">
                         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -333,11 +351,13 @@ ViewData["Title"] = "Admin Page";
                             </a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
-                                <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                                Logout
+                                <partial name="_LoginPartial" />
                             </a>
                         </div>
                     </li>
+                    -->
+                    
+                    
 
                 </ul>
 
