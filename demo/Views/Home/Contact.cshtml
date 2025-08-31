@@ -1,0 +1,38 @@
+﻿@{
+    ViewData["Title"] = "Contact Us";
+    <link rel="stylesheet" href="~/css/style.css" asp-append-version="true" />
+}
+
+<div class="container py-5" style="min-height: 80vh; display: flex; align-items: center;">
+    <div class="row w-100">
+        <!-- Left text section -->
+        <div class="col-lg-6 mb-4">
+            <h2 class="mb-3">We are here to help!</h2>
+            <p class="lead">
+                Let us know how we can best serve you. Use the contact form to email us or select from the topics
+                that best fit your needs. It’s an honor to support you in your journey towards better living.
+            </p>
+        </div>
+
+        <!-- Right form section -->
+        <div class="col-lg-6">
+            <form method="post" class="p-4 border rounded shadow-sm bg-white">
+                <div class="mb-3">
+                    <input type="text" class="form-control" placeholder="Name" required />
+                </div>
+                <div class="mb-3">
+                    <input type="email" class="form-control" placeholder="Email" required />
+                </div>
+                <div class="mb-3">
+                    <input type="text" class="form-control" placeholder="Phone number" />
+                </div>
+                <div class="mb-3">
+                    <textarea class="form-control" rows="4" placeholder="Comment" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary px-4 py-2">
+                    Send Message
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
