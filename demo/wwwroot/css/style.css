@@ -172,7 +172,7 @@ a {
       .hero h1 {
         font-size: 54px; } }
 .hero p {
-    color: rgba(255, 255, 255, 0.5); /* Light text */
+    color: rgba(255, 255, 255, 0.8); /* Light text */
 }
   .hero .hero-img-wrap {
     position: relative; }
