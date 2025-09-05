@@ -14,7 +14,7 @@ namespace demo.ViewComponents
         private readonly AppDbContext _context;
         private readonly UserManager<Users> _userManager;
 
-        public Navigation(AppDbContext context, UserManager<Users> userManager)
+        public Navigation(AppDbContext context, UserManager<Users> userManager) 
         {
             _context = context;
             _userManager = userManager;
@@ -23,6 +23,13 @@ namespace demo.ViewComponents
         public async Task<IViewComponentResult> InvokeAsync()
         {
             var currentUser = await _userManager.GetUserAsync(HttpContext.User);
+            if(currentUser == null) {
+                var model1 = new NavigationViewModel
+                {
+                    
+                };
+                return View("Index", model1);
+            }
             var cart = await _context.Carts.Where(x => x.UserId == currentUser.Id).ToListAsync();
 
             var model = new NavigationViewModel

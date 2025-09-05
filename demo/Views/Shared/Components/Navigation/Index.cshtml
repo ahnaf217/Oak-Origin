@@ -1,6 +1,11 @@
 ﻿@using demo.ViewModels
 @model NavigationViewModel
 
+@{
+    var currentController = ViewContext.RouteData.Values["controller"]?.ToString();
+    var currentAction = ViewContext.RouteData.Values["action"]?.ToString();
+}
+
 <nav class="custom-navbar navbar navbar-expand-md navbar-dark bg-dark" aria-label="Furni navigation bar">
     <div class="container">
         <a class="navbar-brand" asp-controller="Home" asp-action="Index">Oak & Origin<span>.</span></a>
@@ -11,15 +16,24 @@
 
         <div class="collapse navbar-collapse" id="navbarsFurni">
             <ul class="custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0">
-                <li class="nav-item active">
+                <li class="nav-item @(currentController == "Home" && currentAction == "Index" ? "active" : "")">
                     <a class="nav-link" asp-controller="Home" asp-action="Index">Home</a>
                 </li>
-                <li><a class="nav-link" asp-controller="Home" asp-action="shop">Shop</a></li>
-                <li><a class="nav-link" asp-controller="Home" asp-action="About">About Us</a></li>
-                <li><a class="nav-link" asp-controller="Home" asp-action="Services">Services</a></li>
-                <li><a class="nav-link" href="blog.html">Blog</a></li>
-                <li><a class="nav-link" asp-controller="Home" asp-action="Contact">Contact Us</a></li>
-
+                <li class="nav-item @(currentController == "Home" && currentAction == "shop" ? "active" : "")">
+                    <a class="nav-link" asp-controller="Home" asp-action="shop">Shop</a>
+                </li>
+                <li class="nav-item @(currentController == "Home" && currentAction == "About" ? "active" : "")">
+                    <a class="nav-link" asp-controller="Home" asp-action="About">About Us</a>
+                </li>
+                <li class="nav-item @(currentController == "Home" && currentAction == "Services" ? "active" : "")">
+                    <a class="nav-link" asp-controller="Home" asp-action="Services">Services</a>
+                </li>
+                <li class="nav-item @(currentController == "Home" && currentAction == "Blog" ? "active" : "")">
+                    <a class="nav-link" asp-controller="Home" asp-action="Blog">Blog</a>
+                </li>
+                <li class="nav-item @(currentController == "Home" && currentAction == "Contact" ? "active" : "")">
+                    <a class="nav-link" asp-controller="Home" asp-action="Contact">Contact Us</a>
+                </li>
             </ul>
 
             <ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
@@ -28,7 +42,15 @@
                     <a class="nav-link" asp-controller="Cart" asp-action="Cart_Index">
                         <img src="~/images/cart.svg" alt="Cart" />
                     </a>
-                    <span id="cartCount" style="position: absolute; top: -10px; right: -10px; background-color: red; color: white; border-radius: 50%; padding: 2px 6px; font-size: 12px; font-weight: bold; height: 30px; width: 30px; display: flex; justify-content: center; align-items: center;">@Model.Cart.Count</span>
+                    @if (Model.Cart == null)
+                    {
+                        <span id="cartCount" style="position: absolute; top: -10px; right: -10px; background-color: red; color: white; border-radius: 50%; padding: 2px 6px; font-size: 12px; font-weight: bold; height: 30px; width: 30px; display: flex; justify-content: center; align-items: center;">0</span>
+                    }
+                    else
+                    {
+                        <span id="cartCount" style="position: absolute; top: -10px; right: -10px; background-color: red; color: white; border-radius: 50%; padding: 2px 6px; font-size: 12px; font-weight: bold; height: 30px; width: 30px; display: flex; justify-content: center; align-items: center;">@Model.Cart.Count</span>
+                    }
+                    
                 </div>
 
                 <partial name="_LoginPartial" />
