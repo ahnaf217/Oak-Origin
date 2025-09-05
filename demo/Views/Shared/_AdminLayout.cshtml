@@ -16,13 +16,14 @@
 	<link rel="stylesheet" href="~/css/style.css" asp-append-version="true" />
 
 	<!-- Admin bashboard-->
-	<!-- Custom fonts for this template-->
+	<!-- Custom fonts-->
 	<link href="~/Dashboard/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
 	<link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
 		  rel="stylesheet">
 
-	<!-- Custom styles for this template-->
-	<link href="~/Dashboard/css/sb-admin-2.min.css" rel="stylesheet">
+	<!-- Custom styles-->
+	<link href="~/Dashboard/css/sb-admin-2.min.css" rel="stylesheet" asp-append-version="true">
+    
 </head>
 <body id="page-top">
     <!-- Page Wrapper -->
@@ -59,6 +60,22 @@
             <div class="sidebar-heading">
                 Interface
             </div>
+
+            <li class="nav-item">
+            <a class="nav-link" asp-controller="Products" asp-action="Index">
+
+                <i class="fas fa-fw fa-cog"></i>
+                <span>Products</span>
+            </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" asp-controller="AdminOrders" asp-action="Index">
+
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>Orders</span>
+                </a>
+            </li>
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
