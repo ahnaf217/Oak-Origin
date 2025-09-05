@@ -29,35 +29,7 @@
 </head>
 <body>
     <!-- Start Header/Navigation -->
-    <nav class="custom-navbar navbar navbar-expand-md navbar-dark bg-dark" aria-label="Furni navigation bar">
-        <div class="container">
-            <a class="navbar-brand" asp-controller="Home" asp-action="Index">Oak & Origin<span>.</span></a>
-
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsFurni" aria-controls="navbarsFurni" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="navbarsFurni">
-                <ul class="custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0">
-                    <li class="nav-item active">
-                        <a class="nav-link" asp-controller="Home" asp-action="Index">Home</a>
-                    </li>
-                    <li><a class="nav-link" asp-controller="Home" asp-action="shop">Shop</a></li>
-					<li><a class="nav-link" asp-controller="Home" asp-action="About">About Us</a></li>
-					<li><a class="nav-link" asp-controller="Home" asp-action="Services">Services</a></li>
-                    <li><a class="nav-link" href="blog.html">Blog</a></li>
-                    <li><a class="nav-link" href="contact.html">Contact us</a></li>
-                </ul>
-
-                <ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
-                    <li><a class="nav-link" asp-controller="Account" asp-action="Profile"><img src="~/images/user.svg" /></a></li>
-                    <li><a class="nav-link" asp-controller="Cart" asp-action="Cart_Index"><img src="~/images/cart.svg" /></a></li>
-
-					<partial name="_LoginPartial" />
-				</ul>
-			</div>
-		</div>
-	</nav>
+    @await Component.InvokeAsync("Navigation")
 	<!-- End Header/Navigation -->
 	<!-- Main body -->
 	<main role="main" class="pb-3">
@@ -157,7 +129,7 @@
 						<p class="mb-2 text-center text-lg-start">
 							Copyright &copy;<script>document.write(new Date().getFullYear());</script>.
 							All Rights Reserved. Designed with ❤️ by Oak & Origin Creative Team.
-							<a href="https://github.com/ahnaf217/Oak-Origin</a>
+							<a> href="https://github.com/ahnaf217/Oak-Origin</a>
 						</p>
 
 
