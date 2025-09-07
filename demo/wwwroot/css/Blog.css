@@ -1,0 +1,62 @@
+﻿:root {
+    --cream: #fff8f0;
+    --saddle: #8b5e3c;
+    --brown: #5a3e2b;
+    --gold: #d4af37;
+}
+
+.card-radius {
+    border-radius: 12px;
+}
+
+.card-bg {
+    background-color: #fff;
+}
+
+.card-body p {
+    font-size: 0.95rem;
+}
+
+.text-brown {
+    color: var(--brown) !important;
+}
+
+.badge-gold {
+    background-color: var(--gold);
+    color: #fff;
+    font-size: 0.75rem;
+    padding: 0.35em 0.6em;
+    border-radius: 6px;
+}
+
+.btn-brown {
+    background-color: var(--brown);
+    color: #fff;
+    border-radius: 6px;
+    font-size: 0.8rem;
+}
+
+    .btn-brown:hover {
+        background-color: var(--saddle);
+        color: #fff;
+    }
+
+.blog-card {
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+    .blog-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    }
+
+.blog-img {
+    height: 180px;
+    object-fit: cover;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+}
+
+.section-soft {
+    background-color: #fdf7f0;
+}

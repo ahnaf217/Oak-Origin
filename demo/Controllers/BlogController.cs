@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using demo.Data;              // এখানে demo.Data namespace ব্যবহার হবে
-using demo.Models;            // Models namespace 
+using demo.Data;             
+using demo.Models;            
 
 namespace demo.Controllers
 {

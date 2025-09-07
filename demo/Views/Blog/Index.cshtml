@@ -4,10 +4,13 @@
     var page = (int)ViewBag.Page;
     var totalPages = (int)ViewBag.TotalPages;
 }
+@section Styles {
+    <link rel="stylesheet" href="~/css/Blog.css" />
+}
 
 <section class="py-5">
     <div class="container">
-        <div class="text-center mb-4">
+        <div class="text-center mb-5">
             <h5 class="mb-2" style="color:var(--saddle)">— Our Blog</h5>
             <h2 class="fw-bold text-brown">Latest Articles & Trends</h2>
         </div>
@@ -16,7 +19,7 @@
             @foreach (var post in Model)
             {
                 <div class="col-md-6 col-lg-4 d-flex">
-                    @Html.Partial("_PostCard", post)
+                    @await Html.PartialAsync("_PostCard", post)
                 </div>
             }
         </div>

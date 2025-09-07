@@ -216,7 +216,7 @@ a {
 /*      ---------------------------------------------------------button---------------------------------*/
 .btn {
     font-weight: 600;
-    padding: 12px 30px;
+      padding: 12px 15px;
     border-radius: 30px;
     color: #ffffff;
     background: #d57c0f;
