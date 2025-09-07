@@ -1,5 +1,8 @@
 ﻿﻿@using Microsoft.AspNetCore.Identity;
 @inject SignInManager<Users> signInManager;
+@{
+    <link rel="stylesheet" href="~/css/style.css" asp-append-version="true" />
+}
 
 <ul class="navbar-nav ms-auto align-items-center">
     @if (signInManager.IsSignedIn(User))
@@ -7,7 +10,7 @@
         <li class="nav-item">
             <form asp-controller="Account" asp-action="Logout" method="post" class="d-inline">
                 @Html.AntiForgeryToken()
-                <button type="submit" class="btn btn-link nav-link text-dark p-0">Logout</button>
+                <button type="submit" class="btn-logout">Logout</button>
             </form>
         </li>
     }

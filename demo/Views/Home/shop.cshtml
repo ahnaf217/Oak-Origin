@@ -18,9 +18,9 @@
 	<!-- Bootstrap CSS -->
 	<link href="@Url.Content("~/css/bootstrap.min.css")" rel="stylesheet">
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-	<link href="@Url.Content("~/css/tiny-slider.css")" rel="stylesheet">
+    <link href="@Url.Content("~/css/tiny-slider.css")" rel="stylesheet">
 	<link rel="stylesheet" href="~/css/style.css" asp-append-version="true" />
-	<title>asdasd</title>
+  
 </head>
 
 <body>
@@ -67,7 +67,8 @@
 												<div class="new-arrival-cart">
 													<p>
 														<span class="lnr lnr-cart"></span>
-														<a href="#">add <span>to </span> cart</a>
+														<a asp-controller="Cart" asp-action="AddToCart" asp-route-productId="@product.Id">Add <span>to</span> Cart</a>
+
 													</p>
 													<p class="arrival-review pull-right">
 														<span class="lnr lnr-heart"></span>
