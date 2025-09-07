@@ -1074,3 +1074,65 @@ p.arrival-review span {
     font-size: 1rem;
     line-height: 1.5;
 }
+/* ----------------------------------Blog Page Enhancements */
+/*.blog-container {
+    background-color: #f9f9f9;
+    padding: 2rem 0;
+}
+
+.blog-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #5a3e36;
+}
+
+.blog-meta {
+    font-size: 0.9rem;
+    color: #888;
+    margin-bottom: 1rem;
+}
+
+.blog-content {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #333;
+}
+
+.blog-related-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #5a3e36;
+    margin-top: 2rem;
+}
+
+.blog-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+    .blog-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+    }
+
+    .blog-card img {
+        width: 100%;
+        height: auto;
+        border-bottom: 1px solid #ddd;
+    }
+
+.blog-card-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #5a3e36;
+    margin: 0.5rem 1rem;
+}
+
+.blog-card-meta {
+    font-size: 0.8rem;
+    color: #888;
+    margin: 0 1rem 1rem;
+}*/

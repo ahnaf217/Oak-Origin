@@ -1,0 +1,51 @@
+﻿/*:root {
+    --light-beige: #E3DCD2;
+    --white: #FFFFFF;
+    --off-white: #F5EFE6;
+    --saddle: #8B4513;
+    --cream: #F6F0E7;
+    --gold: #FFC105;
+    --soft-beige: #E2DBD1;
+    --brownish: #8F4C1C;
+    --warm-beige: #D9CABC;
+    --dark-brown: #8C4513;
+}
+
+body {
+    background: var(--off-white);
+}
+
+.text-brown {
+    color: var(--dark-brown) !important;
+}
+
+.badge-gold {
+    background: var(--gold);
+    color: var(--dark-brown);
+}
+
+.btn-brown {
+    background: var(--saddle);
+    color: #fff;
+    border-color: var(--saddle);
+}
+
+    .btn-brown:hover {
+        background: var(--dark-brown);
+        border-color: var(--dark-brown);
+    }
+
+.card-radius {
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.card-bg {
+    background: #fff;
+}
+
+.section-soft {
+    background: var(--cream);
+    border-radius: 12px;
+}
+*/

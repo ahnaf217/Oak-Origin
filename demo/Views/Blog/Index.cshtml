@@ -1,0 +1,44 @@
+﻿@model IEnumerable<demo.Models.Post>
+@{
+    ViewData["Title"] = "Our Blog";
+    var page = (int)ViewBag.Page;
+    var totalPages = (int)ViewBag.TotalPages;
+}
+
+<section class="py-5">
+    <div class="container">
+        <div class="text-center mb-4">
+            <h5 class="mb-2" style="color:var(--saddle)">— Our Blog</h5>
+            <h2 class="fw-bold text-brown">Latest Articles & Trends</h2>
+        </div>
+
+        <div class="row g-4">
+            @foreach (var post in Model)
+            {
+                <div class="col-md-6 col-lg-4 d-flex">
+                    @Html.Partial("_PostCard", post)
+                </div>
+            }
+        </div>
+
+        <!-- Pagination -->
+        <nav class="mt-4">
+            <ul class="pagination justify-content-center">
+                <li class="page-item @(page == 1 ? "disabled" : "")">
+                    <a class="page-link" href="@Url.Action("Index", new { page = page - 1 })">&laquo;</a>
+                </li>
+
+                @for (int i = Math.Max(1, page - 2); i <= Math.Min(totalPages, page + 2); i++)
+                {
+                    <li class="page-item @(i == page ? "active" : "")">
+                        <a class="page-link" href="@Url.Action("Index", new { page = i })">@i</a>
+                    </li>
+                }
+
+                <li class="page-item @(page == totalPages ? "disabled" : "")">
+                    <a class="page-link" href="@Url.Action("Index", new { page = page + 1 })">&raquo;</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</section>

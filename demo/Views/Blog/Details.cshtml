@@ -1,0 +1,54 @@
+﻿@model demo.Models.Post
+@{
+    ViewData["Title"] = Model.Title;
+    var related = ViewBag.Related as List<demo.Models.Post> ?? new();
+}
+
+<section class="py-5" style="background:var(--cream);">
+    <div class="container">
+        <div class="row">
+            <!-- Content -->
+            <div class="col-lg-8">
+                <img src="@Model.CoverImageUrl" alt="@Model.Title" class="img-fluid mb-4 card-radius" />
+                <h1 class="fw-bold text-brown">@Model.Title</h1>
+                <p class="text-muted">
+                    <span class="badge badge-gold">@Model.PublishedAt.ToString("dd MMM yyyy")</span>
+                    &nbsp;•&nbsp; <strong style="color:var(--saddle)">@Model.Category?.Name</strong>
+                </p>
+
+                <article class="bg-white p-4 card-radius shadow-sm">
+                    @Html.Raw(Model.Content)
+                </article>
+
+                <div class="mt-5">
+                    <h4 class="text-brown">Related News & Blogs</h4>
+                    <div class="row g-4 mt-1">
+                        @foreach (var p in related)
+                        {
+                            <div class="col-md-6 col-lg-4 d-flex">
+                                @Html.Partial("_PostCard", p)
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="col-lg-4">
+                <div class="p-4 mb-4 section-soft">
+                    <h5 class="text-brown">Table of Content</h5>
+                    <p class="mb-0 text-muted">Use headings inside Content or keep a short summary here.</p>
+                </div>
+
+                <div class="p-4 section-soft">
+                    <h5 class="text-brown">Share</h5>
+                    <div class="d-flex gap-2">
+                        <a class="btn btn-sm btn-brown" href="#">Facebook</a>
+                        <a class="btn btn-sm btn-brown" href="#">Twitter/X</a>
+                        <a class="btn btn-sm btn-brown" href="#">Pinterest</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
