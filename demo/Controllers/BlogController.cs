@@ -44,7 +44,33 @@ namespace demo.Controllers
                 .ToListAsync();
 
             ViewBag.Related = related;
+			
+            //var comments = await _db.Comments.Where(c => c.PostId == post.Id).ToListAsync();
+            //ViewBag.Comments = comments;
+			
             return View(post);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> AddComment(int postId, string author, string content)
+        {
+            if (string.IsNullOrWhiteSpace(author) || string.IsNullOrWhiteSpace(content))
+            {
+                return RedirectToAction("Details", new { id = postId });
+            }
+
+            var comment = new Comment
+            {
+                PostId = postId,
+                Author = author,
+                Content = content,
+                CreatedAt = DateTime.UtcNow
+            };
+
+            _db.Comments.Add(comment);
+            await _db.SaveChangesAsync();
+
+            return RedirectToAction("Details", new { id = postId });
         }
     }
 }

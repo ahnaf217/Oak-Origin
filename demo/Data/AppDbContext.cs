@@ -24,6 +24,7 @@ namespace demo.Data
         //public DbSet<Product> Products { get; set; }
         public DbSet<Post> Posts { get; set; }
         public DbSet<Category> Categories { get; set; }
+        public DbSet<Comment> Comments { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -78,8 +79,38 @@ namespace demo.Data
                     PublishedAt = new DateTime(2024, 4, 8),
                     CategoryId = 3,
                     IsPublished = true
+                },
+                new Post
+                {
+                    Id = 4,
+                    Title = "Modern Dining Table Ideas",
+                    Slug = "modern-dining-table-ideas",
+                    Excerpt = "Top styles for 2024 dining tables.",
+                    Content = "Sample content for dining table...",
+                    CoverImageUrl = "/images/blog/dining-table.jpg",
+                    PublishedAt = new DateTime(2024, 5, 1),
+                    CategoryId = 4,
+                    IsPublished = true
+                },
+                new Post
+                {
+                    Id = 5,
+                    Title = "How to Maintain Wooden Furniture",
+                    Slug = "maintain-wooden-furniture",
+                    Excerpt = "Care tips for long-lasting wood finish.",
+                    Content = "Sample content for maintenance...",
+                    CoverImageUrl = "/images/blog/wood-maintenance.jpg",
+                    PublishedAt = new DateTime(2024, 5, 5),
+                    CategoryId = 5,
+                    IsPublished = true
                 }
             );
+
+            //modelBuilder.Entity<Comment>()
+            //    .HasOne(c => c.Post)
+            //    .WithMany(p => p.Comments)
+            //    .HasForeignKey(c => c.PostId)
+            //    .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }
