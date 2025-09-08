@@ -24,7 +24,9 @@ namespace demo.Controllers
         // GET: Products
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Products.ToListAsync());
+            return View(await _context.Products
+                .Include(x => x.Category)
+                .ToListAsync());
         }
 
         // GET: Products/Details/5
@@ -141,6 +143,8 @@ namespace demo.Controllers
                     oldProduct.Price = product.Price;
                     oldProduct.Description = product.Description;
                     oldProduct.Name = product.Name;
+                    oldProduct.CategoryId = product.CategoryId;
+
                     _context.Update(oldProduct);
                     await _context.SaveChangesAsync();
                 }

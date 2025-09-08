@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
 namespace demo.Models
@@ -16,6 +17,7 @@ namespace demo.Models
 
         public string Image { get; set; }
 
+        [DisplayName("Category")]
         public int? CategoryId { get; set; }
 
         public Category Category { get; set; }
