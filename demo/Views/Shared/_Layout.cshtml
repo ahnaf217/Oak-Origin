@@ -48,10 +48,12 @@
 					<li><a class="nav-link" asp-controller="Home" asp-action="Services">Services</a></li>
 					<li><a class="nav-link text-brown" asp-controller="Blog" asp-action="Index">Blog</a></li>
                     <li><a class="nav-link" href="contact.html">Contact us</a></li>
+					<!-- <li><a class="nav-link" href="http://localhost:<port>/Profile">Profile</a></li> -->
+
                 </ul>
 
                 <ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
-                    <li><a class="nav-link" asp-controller="Account" asp-action="Profile"><img src="~/images/user.svg" /></a></li>
+                    <li><a class="nav-link" asp-controller="UserProfile" asp-action="Profile"><img src="~/images/user.svg" /></a></li>
                     <li><a class="nav-link" asp-controller="Cart" asp-action="Cart_Index"><img src="~/images/cart.svg" /></a></li>
 					<partial name="_LoginPartial" />
                 </ul>
