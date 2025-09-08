@@ -1,0 +1,21 @@
+﻿@model IEnumerable<demo.Models.Post>
+
+<h2>Blog</h2>
+
+<div class="row">
+    @foreach (var post in Model)
+    {
+        <div class="col-md-4 mb-4">
+            <div class="card shadow-sm">
+                <img src="@post.CoverImageUrl" class="card-img-top" alt="@post.Title">
+                <div class="card-body">
+                    <h5 class="card-title">@post.Title</h5>
+                    <p class="card-text">@post.Excerpt</p>
+                    <a href="@Url.Action("Details", "Posts", new { slug = post.Slug })" class="btn btn-primary">
+                        Read More
+                    </a>
+                </div>
+            </div>
+        </div>
+    }
+</div>

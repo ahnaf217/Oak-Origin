@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using demo.Data;
 
@@ -11,9 +12,11 @@ using demo.Data;
 namespace demo.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250908105926_SeedDataInit")]
+    partial class SeedDataInit
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -164,23 +167,18 @@ namespace demo.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("AddressLine")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("City")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PinCode")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("State")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UserId")
-                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
@@ -205,7 +203,6 @@ namespace demo.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("UserId")
-                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<int>("total")
@@ -228,21 +225,39 @@ namespace demo.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-
-                    b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Image")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(60)
+                        .HasColumnType("nvarchar(60)");
+
+                    b.Property<string>("Slug")
+                        .IsRequired()
+                        .HasMaxLength(80)
+                        .HasColumnType("nvarchar(80)");
 
                     b.HasKey("Id");
 
                     b.ToTable("Categories");
 
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "Trends",
+                            Slug = "trends"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "Living Room",
+                            Slug = "living-room"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Name = "Tips",
+                            Slug = "tips"
+                        });
                 });
 
             modelBuilder.Entity("demo.Models.Order", b =>
@@ -263,11 +278,9 @@ namespace demo.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Status")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UserId")
-                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
@@ -396,7 +409,7 @@ namespace demo.Migrations
                         new
                         {
                             Id = 4,
-                            CategoryId = 4,
+                            CategoryId = 1,
                             Content = "Sample content for dining table...",
                             CoverImageUrl = "/images/blog/dining-table.jpg",
                             Excerpt = "Top styles for 2024 dining tables.",
@@ -408,7 +421,7 @@ namespace demo.Migrations
                         new
                         {
                             Id = 5,
-                            CategoryId = 5,
+                            CategoryId = 3,
                             Content = "Sample content for maintenance...",
                             CoverImageUrl = "/images/blog/wood-maintenance.jpg",
                             Excerpt = "Care tips for long-lasting wood finish.",
@@ -427,27 +440,19 @@ namespace demo.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int?>("CategoryId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Description")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Image")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("CategoryId");
 
                     b.ToTable("Products");
                 });
@@ -472,7 +477,6 @@ namespace demo.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("FullName")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("LockoutEnabled")
@@ -576,9 +580,7 @@ namespace demo.Migrations
                 {
                     b.HasOne("demo.Models.Users", "User")
                         .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("UserId");
 
                     b.Navigation("User");
                 });
@@ -593,24 +595,11 @@ namespace demo.Migrations
 
                     b.HasOne("demo.Models.Users", "User")
                         .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("UserId");
 
                     b.Navigation("Product");
 
                     b.Navigation("User");
-                });
-
-            modelBuilder.Entity("demo.Models.Comment", b =>
-                {
-                    b.HasOne("demo.Models.Post", "Post")
-                        .WithMany()
-                        .HasForeignKey("PostId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Post");
                 });
 
             modelBuilder.Entity("demo.Models.Order", b =>
@@ -623,9 +612,7 @@ namespace demo.Migrations
 
                     b.HasOne("demo.Models.Users", "User")
                         .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("UserId");
 
                     b.Navigation("Address");
 
@@ -651,18 +638,21 @@ namespace demo.Migrations
                     b.Navigation("Product");
                 });
 
-
-            modelBuilder.Entity("demo.Models.Product", b =>
+            modelBuilder.Entity("demo.Models.Post", b =>
                 {
                     b.HasOne("demo.Models.Category", "Category")
-                        .WithMany()
-                        .HasForeignKey("CategoryId");
-
+                        .WithMany("Posts")
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Category");
                 });
 
-
+            modelBuilder.Entity("demo.Models.Category", b =>
+                {
+                    b.Navigation("Posts");
+                });
 
             modelBuilder.Entity("demo.Models.Order", b =>
                 {

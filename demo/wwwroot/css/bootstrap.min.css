@@ -8124,9 +8124,13 @@ textarea.form-control-lg {
     color: rgba(var(--bs-body-color-rgb),var(--bs-text-opacity)) !important
 }
 
-.text-muted {
+.text-par {
     --bs-text-opacity: 1;
     color: #e3dcd2 !important;
+}
+.text-muted {
+    --bs-text-opacity: 1;
+    color: #000000 !important;
 }
 
 

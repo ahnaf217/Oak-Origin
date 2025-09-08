@@ -11582,11 +11582,10 @@ body.sidebar-toggled footer.sticky-footer {
 
 /* Breadcrumb on dark bg */
 .breadcrumb-light a {
-    color: var(--text-light);
+    color: #f9bf29;
     text-decoration: none;
-    opacity: .85;
+    opacity: 1.85;
 }
-
     .breadcrumb-light a:hover {
         opacity: 1;
     }

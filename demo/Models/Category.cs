@@ -6,6 +6,7 @@ namespace demo.Models
     {
         public int Id { get; set; }
 
+
         [Required]
         public string Name { get; set; }
 
@@ -14,3 +15,4 @@ namespace demo.Models
         public string Image { get; set; }
     }
 }
+

@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -24,9 +26,11 @@ namespace demo.Controllers
         // GET: Products
         public async Task<IActionResult> Index()
         {
+
             return View(await _context.Products
                 .Include(x => x.Category)
                 .ToListAsync());
+>>>>>>> master
         }
 
         // GET: Products/Details/5
@@ -52,10 +56,9 @@ namespace demo.Controllers
         {
             return View();
         }
-
+       
         // POST: Products/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+      
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(Product product, IFormFile Image)
