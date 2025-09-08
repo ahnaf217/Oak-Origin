@@ -20,6 +20,7 @@ namespace demo.Data
         public DbSet<Order> Orders { get; set; }
 
         public DbSet<OrderProduct> OrderProducts { get; set; }
+
         //public DbSet<Category> Categories { get; set; }
         //public DbSet<Product> Products { get; set; }
         public DbSet<Post> Posts { get; set; }
@@ -112,6 +113,11 @@ namespace demo.Data
             //    .HasForeignKey(c => c.PostId)
             //    .OnDelete(DeleteBehavior.Cascade);
         }
+
+
+        public DbSet<Category> Categories { get; set; }
+
+
     }
 }
     

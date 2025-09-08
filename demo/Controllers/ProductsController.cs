@@ -26,10 +26,11 @@ namespace demo.Controllers
         // GET: Products
         public async Task<IActionResult> Index()
         {
-            //return View(await _context.Products.ToListAsync());
-            var products = await _context.Products.ToListAsync();
-            return View(products);
 
+            return View(await _context.Products
+                .Include(x => x.Category)
+                .ToListAsync());
+>>>>>>> master
         }
 
         // GET: Products/Details/5
@@ -97,6 +98,9 @@ namespace demo.Controllers
                 return NotFound();
             }
 
+            var categories = await _context.Categories.ToArrayAsync();
+            ViewBag.Categories = new SelectList(categories, "Id", "Name");
+
             var product = await _context.Products.FindAsync(id);
             if (product == null)
             {
@@ -142,6 +146,8 @@ namespace demo.Controllers
                     oldProduct.Price = product.Price;
                     oldProduct.Description = product.Description;
                     oldProduct.Name = product.Name;
+                    oldProduct.CategoryId = product.CategoryId;
+
                     _context.Update(oldProduct);
                     await _context.SaveChangesAsync();
                 }

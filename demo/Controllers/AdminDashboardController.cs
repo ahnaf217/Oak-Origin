@@ -8,10 +8,12 @@ namespace demo.Controllers
     public class AdminDashboardController : Controller
     {
         [Authorize(Roles = "Admin")]
+
         public IActionResult Admin_Dashboard()
         {
             ViewData["HideHeaderFooter"] = true;
             return View();
         }
+
     }
 }

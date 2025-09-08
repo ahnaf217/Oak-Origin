@@ -1,16 +1,18 @@
 ﻿using System.ComponentModel.DataAnnotations;
+
 namespace demo.Models
 {
     public class Category
     {
         public int Id { get; set; }
 
-        [Required, MaxLength(60)]
-        public string Name { get; set; } = default!;
 
-        [Required, MaxLength(80)]
-        public string Slug { get; set; } = default!;
+        [Required]
+        public string Name { get; set; }
 
-        public ICollection<Post> Posts { get; set; } = new List<Post>();
+        public string Description { get; set; }
+
+        public string Image { get; set; }
     }
 }
+
