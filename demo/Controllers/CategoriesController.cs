@@ -10,26 +10,22 @@ using demo.Models;
 
 namespace demo.Controllers
 {
-    public class ProductsController : Controller
+    public class CategoriesController : Controller
     {
         private readonly AppDbContext _context;
 
-        public object FileName { get; private set; }
-
-        public ProductsController(AppDbContext context)
+        public CategoriesController(AppDbContext context)
         {
             _context = context;
         }
 
-        // GET: Products
+        // GET: Categories
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Products
-                .Include(x => x.Category)
-                .ToListAsync());
+            return View(await _context.Categories.ToListAsync());
         }
 
-        // GET: Products/Details/5
+        // GET: Categories/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -37,57 +33,59 @@ namespace demo.Controllers
                 return NotFound();
             }
 
-            var product = await _context.Products
+            var category = await _context.Categories
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (product == null)
+            if (category == null)
             {
                 return NotFound();
             }
 
-            return View(product);
+            return View(category);
         }
 
-        // GET: Products/Create
+        // GET: Categories/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Products/Create
+        // POST: Categories/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(Product product, IFormFile Image)
+        public async Task<IActionResult> Create(Category category, IFormFile Image)
         {
             if (ModelState.IsValid)
             {
-                if(Image == null)
+                if (Image == null)
                 {
                     ModelState.AddModelError(nameof(Product.Image), "Image is required");
-                    return View(product);
+                    return View(category);
                 }
                 var imageName = Guid.NewGuid() + Path.GetExtension(Image.FileName);
-                if (!Directory.Exists(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/img/Products")))
+                if (!Directory.Exists(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/img/Categories")))
                 {
-                    Directory.CreateDirectory(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/img/Products"));
+                    Directory.CreateDirectory(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/img/Categories"));
                 }
 
-                var savePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/img/Products", imageName);
+                var savePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/img/Categories", imageName);
+
                 await using (var stream = new FileStream(savePath, FileMode.Create))
                 {
                     await Image.CopyToAsync(stream);
                 }
 
-                product.Image = $"/img/Products/{imageName}";
-                    _context.Add(product);
+                category.Image = $"/img/Categories/{imageName}";
+
+                _context.Add(category);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(product);
+            return View(category);
         }
 
-        // GET: Products/Edit/5
+        // GET: Categories/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -95,25 +93,22 @@ namespace demo.Controllers
                 return NotFound();
             }
 
-            var categories = await _context.Categories.ToArrayAsync();
-            ViewBag.Categories = new SelectList(categories, "Id", "Name");
-
-            var product = await _context.Products.FindAsync(id);
-            if (product == null)
+            var category = await _context.Categories.FindAsync(id);
+            if (category == null)
             {
                 return NotFound();
             }
-            return View(product);
+            return View(category);
         }
 
-        // POST: Products/Edit/5
+        // POST: Categories/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
-        
+        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, Product product, IFormFile Image)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Description,Image")] Category category, IFormFile Image)
         {
-            if (id != product.Id)
+            if (id != category.Id)
             {
                 return NotFound();
             }
@@ -122,35 +117,43 @@ namespace demo.Controllers
             {
                 try
                 {
-                    var oldProduct = await _context.Products.FirstOrDefaultAsync(x => x.Id == id);
-                    if(Image != null)
+                    var oldCategory = await _context.Categories.AsNoTracking().FirstOrDefaultAsync(c => c.Id == id);
+
+                    if (oldCategory == null)
+                    {
+                        return NotFound();
+                    }
+
+                    if (Image != null)
                     {
                         var imageName = Guid.NewGuid() + Path.GetExtension(Image.FileName);
-                        if (!Directory.Exists(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/img/Products")))
+                        if (!Directory.Exists(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/img/Categories")))
                         {
-                            Directory.CreateDirectory(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/img/Products"));
+                            Directory.CreateDirectory(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/img/Categories"));
                         }
-
-                        var savePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/img/Products", imageName);
+                        var savePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/img/Categories", imageName);
                         await using (var stream = new FileStream(savePath, FileMode.Create))
                         {
                             await Image.CopyToAsync(stream);
                         }
-
-                        oldProduct.Image = $"/img/Products/{imageName}";
+                        // Delete old image file
+                        if (!string.IsNullOrEmpty(oldCategory.Image))
+                        {
+                            var oldImagePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", oldCategory.Image.TrimStart('/'));
+                            if (System.IO.File.Exists(oldImagePath))
+                            {
+                                System.IO.File.Delete(oldImagePath);
+                            }
+                        }
+                        category.Image = $"/img/Categories/{imageName}";
                     }
 
-                    oldProduct.Price = product.Price;
-                    oldProduct.Description = product.Description;
-                    oldProduct.Name = product.Name;
-                    oldProduct.CategoryId = product.CategoryId;
-
-                    _context.Update(oldProduct);
+                    _context.Update(category);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!ProductExists(product.Id))
+                    if (!CategoryExists(category.Id))
                     {
                         return NotFound();
                     }
@@ -161,10 +164,10 @@ namespace demo.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(product);
+            return View(category);
         }
 
-        // GET: Products/Delete/5
+        // GET: Categories/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -172,34 +175,34 @@ namespace demo.Controllers
                 return NotFound();
             }
 
-            var product = await _context.Products
+            var category = await _context.Categories
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (product == null)
+            if (category == null)
             {
                 return NotFound();
             }
 
-            return View(product);
+            return View(category);
         }
 
-        // POST: Products/Delete/5
+        // POST: Categories/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var product = await _context.Products.FindAsync(id);
-            if (product != null)
+            var category = await _context.Categories.FindAsync(id);
+            if (category != null)
             {
-                _context.Products.Remove(product);
+                _context.Categories.Remove(category);
             }
 
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool ProductExists(int id)
+        private bool CategoryExists(int id)
         {
-            return _context.Products.Any(e => e.Id == id);
+            return _context.Categories.Any(e => e.Id == id);
         }
     }
 }
