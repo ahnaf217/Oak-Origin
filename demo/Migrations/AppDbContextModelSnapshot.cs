@@ -164,23 +164,18 @@ namespace demo.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("AddressLine")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("City")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PinCode")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("State")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UserId")
-                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
@@ -205,7 +200,6 @@ namespace demo.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("UserId")
-                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<int>("total")
@@ -228,7 +222,6 @@ namespace demo.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
@@ -242,7 +235,6 @@ namespace demo.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Categories");
-
                 });
 
             modelBuilder.Entity("demo.Models.Order", b =>
@@ -263,11 +255,9 @@ namespace demo.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Status")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UserId")
-                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
@@ -308,117 +298,6 @@ namespace demo.Migrations
                     b.ToTable("OrderProducts");
                 });
 
-            modelBuilder.Entity("demo.Models.Post", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("CategoryId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Content")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("CoverImageUrl")
-                        .HasMaxLength(250)
-                        .HasColumnType("nvarchar(250)");
-
-                    b.Property<string>("Excerpt")
-                        .HasMaxLength(220)
-                        .HasColumnType("nvarchar(220)");
-
-                    b.Property<bool>("IsPublished")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime>("PublishedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Slug")
-                        .IsRequired()
-                        .HasMaxLength(180)
-                        .HasColumnType("nvarchar(180)");
-
-                    b.Property<string>("Title")
-                        .IsRequired()
-                        .HasMaxLength(160)
-                        .HasColumnType("nvarchar(160)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CategoryId");
-
-                    b.HasIndex("Slug")
-                        .IsUnique();
-
-                    b.ToTable("Posts");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            CategoryId = 1,
-                            Content = "Sample content for trends 2024...",
-                            CoverImageUrl = "/images/blog/trends-2024.jpg",
-                            Excerpt = "Discover the styles defining 2024, from warm neutrals to curvy silhouettes.",
-                            IsPublished = true,
-                            PublishedAt = new DateTime(2024, 4, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Slug = "furniture-trends-2024",
-                            Title = "Furniture Trends 2024: What's Hot and What's Not"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            CategoryId = 2,
-                            Content = "Sample content for sofa guide...",
-                            CoverImageUrl = "/images/blog/sofa-guide.jpg",
-                            Excerpt = "Comfort, style and durability—what to check before you buy.",
-                            IsPublished = true,
-                            PublishedAt = new DateTime(2024, 4, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Slug = "guide-choosing-perfect-sofa",
-                            Title = "The Ultimate Guide to Choosing the Perfect Sofa"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            CategoryId = 3,
-                            Content = "Sample content for budget tips...",
-                            CoverImageUrl = "/images/blog/budget-tips.jpg",
-                            Excerpt = "Smart ways to save without compromising on quality.",
-                            IsPublished = true,
-                            PublishedAt = new DateTime(2024, 4, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Slug = "budget-friendly-furniture-tips",
-                            Title = "Budget-Friendly Furniture Shopping Tips"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            CategoryId = 4,
-                            Content = "Sample content for dining table...",
-                            CoverImageUrl = "/images/blog/dining-table.jpg",
-                            Excerpt = "Top styles for 2024 dining tables.",
-                            IsPublished = true,
-                            PublishedAt = new DateTime(2024, 5, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Slug = "modern-dining-table-ideas",
-                            Title = "Modern Dining Table Ideas"
-                        },
-                        new
-                        {
-                            Id = 5,
-                            CategoryId = 5,
-                            Content = "Sample content for maintenance...",
-                            CoverImageUrl = "/images/blog/wood-maintenance.jpg",
-                            Excerpt = "Care tips for long-lasting wood finish.",
-                            IsPublished = true,
-                            PublishedAt = new DateTime(2024, 5, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Slug = "maintain-wooden-furniture",
-                            Title = "How to Maintain Wooden Furniture"
-                        });
-                });
-
             modelBuilder.Entity("demo.Models.Product", b =>
                 {
                     b.Property<int>("Id")
@@ -431,11 +310,9 @@ namespace demo.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Description")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Image")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
@@ -472,7 +349,6 @@ namespace demo.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("FullName")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("LockoutEnabled")
@@ -576,9 +452,7 @@ namespace demo.Migrations
                 {
                     b.HasOne("demo.Models.Users", "User")
                         .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("UserId");
 
                     b.Navigation("User");
                 });
@@ -593,24 +467,11 @@ namespace demo.Migrations
 
                     b.HasOne("demo.Models.Users", "User")
                         .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("UserId");
 
                     b.Navigation("Product");
 
                     b.Navigation("User");
-                });
-
-            modelBuilder.Entity("demo.Models.Comment", b =>
-                {
-                    b.HasOne("demo.Models.Post", "Post")
-                        .WithMany()
-                        .HasForeignKey("PostId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Post");
                 });
 
             modelBuilder.Entity("demo.Models.Order", b =>
@@ -623,9 +484,7 @@ namespace demo.Migrations
 
                     b.HasOne("demo.Models.Users", "User")
                         .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("UserId");
 
                     b.Navigation("Address");
 
@@ -651,18 +510,14 @@ namespace demo.Migrations
                     b.Navigation("Product");
                 });
 
-
             modelBuilder.Entity("demo.Models.Product", b =>
                 {
                     b.HasOne("demo.Models.Category", "Category")
                         .WithMany()
                         .HasForeignKey("CategoryId");
 
-
                     b.Navigation("Category");
                 });
-
-
 
             modelBuilder.Entity("demo.Models.Order", b =>
                 {

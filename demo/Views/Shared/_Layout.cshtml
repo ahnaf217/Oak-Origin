@@ -1,20 +1,18 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="author" content="Untree.co" />
+	<meta name="description" content="" />
+	<meta name="keywords" content="bootstrap, bootstrap4" />
+	<link rel="shortcut icon" href="~/favicon.png" />
 
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="author" content="Untree.co" />
-    <meta name="description" content="" />
-    <meta name="keywords" content="bootstrap, bootstrap4" />
-    <link rel="shortcut icon" href="~/favicon.png" />
+	<title>@ViewData["Title"] - Oak & Origin</title>
 
-    <title>@ViewData["Title"] - Oak & Origin</title>
-	<link rel="stylesheet" href="~/css/Blog.css" />
-    <link href="~/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
-    <link href="~/css/tiny-slider.css" rel="stylesheet" />
-
+	<link href="~/css/bootstrap.min.css" rel="stylesheet" />
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
+	<link href="~/css/tiny-slider.css" rel="stylesheet" />
 	<link rel="stylesheet" href="~/css/style.css" asp-append-version="true" />
 	
 	<link href="~/Dashboard/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -24,14 +22,13 @@
 	
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
 
-	@* <link rel="stylesheet" href="~/css/Blog.css" /> *@
+	
 	<link href="~/Dashboard/css/sb-admin-2.min.css" rel="stylesheet">
 	<link href="~/css/style.css" rel="stylesheet">
 
 </head>
 <body>
     <!-- Start Header/Navigation -->
-
     @await Component.InvokeAsync("Navigation")
 	<!-- End Header/Navigation -->
 	<!-- Main body -->
@@ -40,7 +37,6 @@
 	</main>
 
 	<!-- Footer -->
-
 	<footer class="footer-section">
 		<div class="container relative">
 
@@ -134,7 +130,7 @@
 						<p class="mb-2 text-center text-lg-start">
 							Copyright &copy;<script>document.write(new Date().getFullYear());</script>.
 							All Rights Reserved. Designed with ❤️ by Oak & Origin Creative Team.
-
+							<a> href="https://github.com/ahnaf217/Oak-Origin</a>
 						</p>
 
 
@@ -161,7 +157,6 @@
 	<script src="~/js/tiny-slider.js"></script>
 	<script src="~/js/custom.js"></script>
 
-
 	<!-- Bootstrap core JavaScript-->
 	<script src="~/Dashboard/vendor/jquery/jquery.min.js"></script>
 	<script src="~/Dashboard/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -178,9 +173,7 @@
 	<!-- Page level custom scripts -->
 	<script src="~/Dashboard/js/demo/chart-area-demo.js"></script>
 	<script src="~/Dashboard/js/demo/chart-pie-demo.js"></script>
-	@RenderSection("Styles", required: false)
 
 	@RenderSection("Scripts", required: false)
 </body>
-
 </html>
