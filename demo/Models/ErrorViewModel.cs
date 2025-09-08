@@ -1,5 +1,3 @@
-#nullable enable
-
 namespace demo.Models
 {
     public class ErrorViewModel
