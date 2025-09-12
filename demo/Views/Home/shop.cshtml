@@ -1,5 +1,6 @@
-﻿@using demo.ViewModels;
-@model ProductViewModels;
+﻿
+@model List<demo.Models.Product>
+
 @{
 	ViewData["Title"] = "Shop";
 }
@@ -31,7 +32,7 @@
 			<div class="row justify-content-between">
 				<div class="col-lg-5">
 					<div class="intro-excerpt">
-						<h1>Shop</h1>
+						<h1>@ViewBag.Title</h1>
 					</div>
 				</div>
 				<div class="col-lg-7">
@@ -48,12 +49,24 @@
 				<!--new-arrivals start -->
 				<section id="new-arrivals" class="new-arrivals">
 					<div class="container">
-						<div class="section-header">
-							<!--<h2>new arrivals</h2>-->
-						</div>
+						<form asp-action="shop" method="get" class="row gx-3 gy-2 align-items-center justify-content-center">
+							<div class="col-sm-3">
+								<label class="visually-hidden" for="category">category</label>
+								<select name="categoryid" class="form-select" id="category" asp-items="@ViewBag.Categories">
+									<option selected value="">Select Category</option>
+									
+									</select>
+							</div>
+
+							<div class="col-auto">
+                                <button type="submit" class="btn btn-primary">Filter</button>
+							</div>
+						</form>		
+					</div>
+
 						<div class="new-arrivals-content">
 							<div class="row">
-								@foreach (var product in Model.Products)
+								@foreach (var product in Model)
 								{
 									<div class="col-md-3 col-sm-4">
 										<div class="single-new-arrival">

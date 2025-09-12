@@ -5,6 +5,7 @@ using demo.Data;
 using Microsoft.EntityFrameworkCore;
 using demo.ViewModels;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace demo.Controllers
 {
@@ -30,10 +31,13 @@ namespace demo.Controllers
                 .OrderBy(si => si.SortOrder)
                 .ToListAsync();
 
+            var categories = await _context.Categories.ToListAsync();
+
             var model = new HomeViewModel
             {
                 Products = products,
-                SliderImages = sliderImages
+                SliderImages = sliderImages,
+                Categories = categories
             };
             return View(model);
         }
@@ -43,13 +47,42 @@ namespace demo.Controllers
             return View();
         }
 
-        public async Task<IActionResult> shop()
+        public async Task<IActionResult> Shop(int? categoryid)
         {
-            var products = await _context.Products.ToListAsync();
-            var model = new ProductViewModels { Products = products };
-            
-            return View(model);
+            var title = "All Products";
+
+
+            var productsQuery = _context.Products
+                .Include(p => p.Category) // include category data
+                .AsQueryable();
+
+            if (categoryid != null)
+            {
+                productsQuery = productsQuery.Where(p => p.CategoryId == categoryid);
+
+                var category = await _context.Categories.FirstOrDefaultAsync(c => c.Id == categoryid);
+
+                if (category != null)
+                {
+                    title = $"{category.Name}s";
+                }
+            }
+
+            var categories = await _context.Categories.ToListAsync();
+            ViewBag.Categories = new SelectList(categories, "Id", "Name", categoryid);
+
+            ViewBag.Title = title;
+
+            var products = await productsQuery.ToListAsync();
+
+            /*var model = new ProductViewModels
+            {
+                Products = products
+            };*/
+
+            return View(products);
         }
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
