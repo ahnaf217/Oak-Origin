@@ -15,6 +15,8 @@
 	<link href="~/css/tiny-slider.css" rel="stylesheet" />
 	<link href="~/css/style.css" rel="stylesheet" />
 	<link rel="stylesheet" href="~/css/style.css" asp-append-version="true" />
+	<link rel="stylesheet" href="~/css/user_profile.css" asp-append-version="true" />
+	<link rel="stylesheet" href="~/css/Blog.css" asp-append-version="true" />
 	
 	<link href="~/Dashboard/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
 	<link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
@@ -108,7 +110,8 @@
 								<li><a href="#">Careers</a></li>
 								<li><a href="#">Our team</a></li>
 								<li><a href="#">Leadership</a></li>
-								<li><a href="#">Privacy Policy</a></li>
+								<li><a class="nav-link" asp-controller="Home" asp-action="Privacy">Privacy Policy</a></li>
+
 							</ul>
 						</div>
 
@@ -139,7 +142,9 @@
 					<div class="col-lg-6 text-center text-lg-end">
 						<ul class="list-unstyled d-inline-flex ms-auto">
 							<li class="me-4"><a href="#">Terms &amp; Conditions</a></li>
-							<li><a href="#">Privacy Policy</a></li>
+							<li><a class="nav-link" asp-controller="Home" asp-action="Privacy">Privacy Policy</a></li>
+
+
 						</ul>
 					</div>
 
