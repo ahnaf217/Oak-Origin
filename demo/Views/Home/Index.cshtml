@@ -1,4 +1,6 @@
-﻿@{
+﻿@using demo.ViewModels
+@model HomeViewModel
+@{
 	Layout = "~/Views/Shared/_Layout.cshtml";
     ViewData["Title"] = "Home Page";
 }
@@ -29,27 +31,63 @@
 	
 	<!-- End Header/Navigation -->
 	<!-- --------------------------------Start Hero Section ---------------->
-	<div class="hero">
-		<div class="container">
-			<div class="row justify-content-between">
-				<div class="col-lg-5">
-					<div class="intro-excerpt">
-						<h1>Modern Interior <span clsas="d-block">Design Studio</span></h1>
-						<p class="mb-4">
-							We design and craft premium furniture for modern homes and offices.
-							Transform your living space with stylish, comfortable, and timeless designs.
-						</p>
-						<p><a href="" class="btn btn-secondary me-2">Shop Now</a><a asp-controller="Home" asp-action="shop" class="btn btn-white-outline">Explore</a></p>
+
+	<!-- Slider main container -->
+	<div class="swiper">
+		<!-- Additional required wrapper -->
+		<div class="swiper-wrapper">
+			@foreach(var slide in Model.SliderImages)
+			{
+				<!-- Slide 1 (Hero Section) -->
+				<div class="swiper-slide">
+					<div class="hero">
+						<div class="container">
+							<div class="row justify-content-between">
+								<div class="col-lg-5">
+									<div class="intro-excerpt">
+										<h1>Modern Interior <span class="d-block">Design Studio</span></h1>
+										<p class="mb-4">
+											We design and craft premium furniture for modern homes and offices.
+											Transform your living space with stylish, comfortable, and timeless designs.
+										</p>
+										<p>
+											<a href="" class="btn btn-secondary me-2">Shop Now</a>
+											<a href="#" class="btn btn-white-outline">Explore</a>
+										</p>
+									</div>
+								</div>
+								<div class="col-lg-7">
+									<div class="hero-img-wrap">
+										<img src="@slide.Image" class="img-fluid" alt="Slider Images" width="800" height="500">
+
+									</div>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
-				<div class="col-lg-7">
-					<div class="hero-img-wrap">
-						<img src="images/white sofa.png" class="img-fluid">
-					</div>
-				</div>
-			</div>
+				
+			}
+
+			
+
+			
+
+			
+
 		</div>
+
+		<!-- If we need pagination -->
+		<div class="swiper-pagination"></div>
+
+		<!-- If we need navigation buttons -->
+		<div class="swiper-button-prev"></div>
+		<div class="swiper-button-next"></div>
+
+		<!-- If we need scrollbar -->
+		<div class="swiper-scrollbar"></div>
 	</div>
+
 	
 	<!-------------------------------------- Start Product Section ------------------>
 	<div class="product-section">
@@ -413,3 +451,35 @@
 </body>
 
 </html>
+
+@section Styles {
+	<link rel="stylesheet"
+		  href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css" />
+}
+
+@section Scripts {
+	<script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
+	<script>
+				const swiper = new Swiper('.swiper', {
+		  // Optional parameters
+		 
+		  loop: true,
+
+		  // If we need pagination
+		  pagination: {
+			el: '.swiper-pagination',
+		  },
+
+		  // Navigation arrows
+		  navigation: {
+			nextEl: '.swiper-button-next',
+			prevEl: '.swiper-button-prev',
+		  },
+
+		  // And if we need scrollbar
+		  scrollbar: {
+			el: '.swiper-scrollbar',
+		  },
+		});
+	</script>
+}
