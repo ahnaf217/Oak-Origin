@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using demo.Data;
 using Microsoft.EntityFrameworkCore;
 using demo.ViewModels;
+using System.Threading.Tasks;
 
 namespace demo.Controllers
 {
@@ -22,9 +23,19 @@ namespace demo.Controllers
             _logger = logger;
         }*/
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            var products = await _context.Products.ToListAsync();
+            var sliderImages = await _context.SliderImages
+                .OrderBy(si => si.SortOrder)
+                .ToListAsync();
+
+            var model = new HomeViewModel
+            {
+                Products = products,
+                SliderImages = sliderImages
+            };
+            return View(model);
         }
 
         public IActionResult Privacy()
@@ -57,6 +68,18 @@ namespace demo.Controllers
         public IActionResult Contact()
         {
             return View();
+        }
+
+        public async Task<IActionResult> ProductDetails(int id)
+        {
+            var product = await _context.Products
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if(product == null)
+            {
+                return NotFound();
+            }
+
+                return View(product);
         }
 
 

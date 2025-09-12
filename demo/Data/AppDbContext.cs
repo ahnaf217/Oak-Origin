@@ -22,6 +22,7 @@ namespace demo.Data
 
         public DbSet<Category> Categories { get; set; }
 
+        public DbSet<SliderImage> SliderImages { get; set; }
 
     }
     

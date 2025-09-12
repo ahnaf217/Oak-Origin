@@ -30,6 +30,9 @@
 <body>
     <!-- Start Header/Navigation -->
     @await Component.InvokeAsync("Navigation")
+
+	@await RenderSectionAsync("PageTitle", required: false)
+	@await RenderSectionAsync("Styles", required: false)
 	<!-- End Header/Navigation -->
 	<!-- Main body -->
 	<main role="main" class="pb-3">
