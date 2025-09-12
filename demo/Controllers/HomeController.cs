@@ -70,6 +70,7 @@ namespace demo.Controllers
             return View();
         }
 
+
         public async Task<IActionResult> ProductDetails(int id)
         {
             var product = await _context.Products
@@ -81,6 +82,7 @@ namespace demo.Controllers
 
                 return View(product);
         }
+
 
 
     }
