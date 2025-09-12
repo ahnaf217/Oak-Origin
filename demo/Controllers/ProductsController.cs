@@ -24,6 +24,7 @@ namespace demo.Controllers
         // GET: Products
         public async Task<IActionResult> Index()
         {
+
             return View(await _context.Products
                 .Include(x => x.Category)
                 .ToListAsync());
