@@ -34,6 +34,9 @@
                 <li class="nav-item @(currentController == "Home" && currentAction == "Contact" ? "active" : "")">
                     <a class="nav-link" asp-controller="Home" asp-action="Contact">Contact Us</a>
                 </li>
+                <li class="nav-item @(currentController == "Recycling" && currentAction == "Index" ? "active" : "")">
+                    <a class="nav-link" asp-controller="Recycling" asp-action="Home">Recycle</a>
+                </li>
             </ul>
 
             <ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">

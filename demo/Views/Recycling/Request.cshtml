@@ -1,0 +1,37 @@
+﻿@model demo.Models.RecyclingRequest
+@{
+    var product = ViewBag.Product as demo.Models.Product;
+}
+
+<h1>Recycle: @product.Name</h1>
+
+<form asp-action="SubmitRequest" method="post">
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <input type="hidden" asp-for="ProductId" />
+
+    <div class="form-group mb-3">
+        <label asp-for="CustomerName">Full Name</label>
+        <input asp-for="CustomerName" class="form-control" />
+        <span asp-validation-for="CustomerName" class="text-danger"></span>
+    </div>
+
+    <div class="form-group mb-3">
+        <label asp-for="ContactEmail">Email</label>
+        <input asp-for="ContactEmail" type="email" class="form-control" />
+        <span asp-validation-for="ContactEmail" class="text-danger"></span>
+    </div>
+
+    <div class="form-group mb-3">
+        <label asp-for="PickupAddress">Pickup Address</label>
+        <textarea asp-for="PickupAddress" class="form-control" rows="3"></textarea>
+        <span asp-validation-for="PickupAddress" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit Recycling Request</button>
+</form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

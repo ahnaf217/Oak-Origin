@@ -24,6 +24,8 @@ namespace demo.Data
 
         public DbSet<SliderImage> SliderImages { get; set; }
 
+        public DbSet<RecyclingRequest> RecyclingRequests { get; set; }
+
     }
     
     

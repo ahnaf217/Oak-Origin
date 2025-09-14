@@ -27,7 +27,7 @@
 <body>
 
 	<!-- Start Hero Section -->
-	<div class="hero">
+	<div class="hero-other">
 		<div class="container">
 			<div class="row justify-content-between">
 				<div class="col-lg-5">
@@ -74,9 +74,9 @@
 												<img src="@Url.Content(product.Image)" alt="@product.Name">
 
 												<div class="single-new-arrival-bg-overlay"></div>
-												<div class="sale bg-1">
-													<p>sale</p>
-												</div>
+											<!--<div class="sale bg-1">
+												<p>sale</p>
+												</div>-->
 												<div class="new-arrival-cart">
 													<p>
 														<span class="lnr lnr-cart"></span>
@@ -90,7 +90,7 @@
 												</div>
 											</div>
 											<h4><a asp-controller="Home" asp-action="ProductDetails" asp-route-id="@product.Id">@product.Name</a></h4>
-											<p class="arrival-product-price">$@product.Price</p>
+										<p class="arrival-product-price">৳@product.Price</p>
 										</div>
 									</div>
 								}	
