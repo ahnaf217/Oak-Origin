@@ -1,0 +1,32 @@
+﻿@model List<demo.Models.Order>
+
+@{
+    ViewData["Title"] = "Recycling";
+}
+<h2>My Orders & Recycling</h2>
+
+@if (Model.Any())
+{
+    @foreach (var order in Model)
+    {
+        <h4>Order #@order.Id - @order.CreatedAt.ToShortDateString()</h4>
+        <ul class="list-group mb-4">
+            @foreach (var orderProduct in order.OrderProducts)
+            {
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <div>
+                        <h5>@orderProduct.Product.Name</h5>
+                        <p>Quantity: @orderProduct.Qty</p>
+                    </div>
+                    <a asp-controller="Recycling" asp-action="Request" asp-route-productId="@orderProduct.ProductId" class="btn btn-primary">
+                        Recycle This
+                    </a>
+                </li>
+            }
+        </ul>
+    }
+}
+else
+{
+    <div class="alert alert-info">You have no past orders to recycle.</div>
+}

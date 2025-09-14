@@ -150,6 +150,12 @@ a {
 .hero {
   background: saddlebrown;
   padding: calc(4rem - 30px) 0 0rem 0; }
+.hero-other {
+    background: saddlebrown;
+    height: 100%;
+    min-height: 250px; /* keeps it from getting too wide */
+    margin: 0 auto;
+}
 
   @media (min-width: 768px) {
     .hero {
@@ -166,6 +172,13 @@ a {
 .hero h1 {
     font-weight: 700;
     color: #e3dcd2; /* Light text */
+    margin-bottom: 30px;
+    text-shadow: 0 2px 8px rgba(204,139,101,0.08);
+}
+.hero-other h1 {
+    font-weight: 700;
+    color: #e3dcd2; /* Light text */
+    margin-top: 60px; /* space above */
     margin-bottom: 30px;
     text-shadow: 0 2px 8px rgba(204,139,101,0.08);
 }
@@ -816,8 +829,8 @@ textarea {
 }
 
     .single-new-arrival-bg img {
-        width: 120px;
-        height: 120px;
+        width: 220px;
+        height: 220px;
         -webkit-transition: .3s linear;
         -moz-transition: .3s linear;
         -ms-transition: .3s linear;

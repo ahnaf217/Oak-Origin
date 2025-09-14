@@ -15,6 +15,8 @@ namespace demo.Models
 
         public double Amount { get; set; }
 
+        public double DiscountAmount { get; set; }
+
         public string Status { get; set; }
         public DateTime CreatedAt { get; set; }
 
