@@ -24,7 +24,10 @@ namespace demo.Controllers
         // GET: Products
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Products.ToListAsync());
+
+            return View(await _context.Products
+                .Include(x => x.Category)
+                .ToListAsync());
         }
 
         // GET: Products/Details/5
@@ -48,6 +51,7 @@ namespace demo.Controllers
         // GET: Products/Create
         public IActionResult Create()
         {
+            ViewBag.Categories = new SelectList(_context.Categories, "Id", "Name");
             return View();
         }
 
@@ -60,28 +64,37 @@ namespace demo.Controllers
         {
             if (ModelState.IsValid)
             {
-                if(Image == null)
+                if (Image == null)
                 {
                     ModelState.AddModelError(nameof(Product.Image), "Image is required");
+
+                    // reload categories so dropdown doesn’t break
+                    ViewBag.Categories = new SelectList(_context.Categories, "Id", "Name", product.CategoryId);
                     return View(product);
                 }
+
                 var imageName = Guid.NewGuid() + Path.GetExtension(Image.FileName);
-                if (!Directory.Exists(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/img/Products")))
+
+                var uploadFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "img", "Products");
+                if (!Directory.Exists(uploadFolder))
                 {
-                    Directory.CreateDirectory(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/img/Products"));
+                    Directory.CreateDirectory(uploadFolder);
                 }
 
-                var savePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/img/Products", imageName);
-                await using (var stream = new FileStream(savePath, FileMode.Create))
+                var savePath = Path.Combine(uploadFolder, imageName);
+                using (var stream = new FileStream(savePath, FileMode.Create))
                 {
                     await Image.CopyToAsync(stream);
                 }
 
                 product.Image = $"/img/Products/{imageName}";
-                    _context.Add(product);
+                _context.Add(product);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+
+            // if model validation fails, reload categories for the dropdown
+            ViewBag.Categories = new SelectList(_context.Categories, "Id", "Name", product.CategoryId);
             return View(product);
         }
 
@@ -92,6 +105,9 @@ namespace demo.Controllers
             {
                 return NotFound();
             }
+
+            var categories = await _context.Categories.ToArrayAsync();
+            ViewBag.Categories = new SelectList(categories, "Id", "Name");
 
             var product = await _context.Products.FindAsync(id);
             if (product == null)
@@ -138,6 +154,8 @@ namespace demo.Controllers
                     oldProduct.Price = product.Price;
                     oldProduct.Description = product.Description;
                     oldProduct.Name = product.Name;
+                    oldProduct.CategoryId = product.CategoryId;
+
                     _context.Update(oldProduct);
                     await _context.SaveChangesAsync();
                 }

@@ -1,0 +1,44 @@
+﻿@model IEnumerable<demo.Models.RecyclingRequest>
+
+@{
+    ViewBag.Title = "Recycling Admin";
+    Layout = "_AdminLayout";
+}
+
+<h1>Recycling Requests</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Product</th>
+            <th>Customer</th>
+            <th>Status</th>
+            <th>Store Credit</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Product.Name</td>
+                <td>@item.CustomerName</td>
+                <td>@item.Status</td>
+                <td>$@item.StoreCreditAmount</td>
+                <td>
+                    @if (item.Status == "Pending")
+                    {
+                        <form asp-action="Approve" method="post" class="d-inline">
+                            <input type="hidden" name="id" value="@item.Id" />
+                            <button type="submit" class="btn btn-success btn-sm">Approve</button>
+                        </form>
+                    }
+                    else if (item.Status == "Approved")
+                    {
+                        <span>Credit Code: **@item.StoreCreditCode**</span>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -150,6 +150,12 @@ a {
 .hero {
   background: saddlebrown;
   padding: calc(4rem - 30px) 0 0rem 0; }
+.hero-other {
+    background: saddlebrown;
+    height: 100%;
+    min-height: 250px; /* keeps it from getting too wide */
+    margin: 0 auto;
+}
 
   @media (min-width: 768px) {
     .hero {
@@ -164,8 +170,16 @@ a {
       .hero .intro-excerpt {
         max-width: 450px; } }
 .hero h1 {
+    font-family: 'Poppins', sans-serif; /* Change font */
     font-weight: 700;
-    color: #e3dcd2; /* Light text */
+    color: #ffffff;
+    margin-bottom: 30px;
+    text-shadow: 0 2px 8px rgba(204,139,101,0.08);
+}
+.hero-other h1 {
+    font-weight: 700;
+    color: #ffffff; /* Light text */
+    margin-top: 0px; /* space above */
     margin-bottom: 30px;
     text-shadow: 0 2px 8px rgba(204,139,101,0.08);
 }
@@ -173,7 +187,8 @@ a {
       .hero h1 {
         font-size: 54px; } }
 .hero p {
-    color: rgba(255, 255, 255, 0.5); /* Light text */
+    font-family: 'Roboto', sans-serif; /* Different font for paragraph */
+    color: rgba(255, 255, 255, 0.6); /* Light text */
 }
   .hero .hero-img-wrap {
     position: relative; }
@@ -245,15 +260,15 @@ a {
         }
     .btn.btn-secondary {
         color: #2f2f2f;
-        background: #f0b874;
+        background: #f9bf29;
         border-color: #f0b874;
     }
      .btn.btn-secondary:hover {
-         background: #d38236;
-          border-color: #d38236;
-            /*            background: #cc8b65;
-            border-color: #cc8b65;*/
-            /*            color: #e3dcd2;*/
+       /*  background: #d38236;
+          border-color: #d38236;*/
+            background: #cc8b65;
+            border-color: #cc8b65;
+/*             color: #e3dcd2;*/
         }
   .btn.btn-white-outline {
     background: transparent;
@@ -816,8 +831,8 @@ textarea {
 }
 
     .single-new-arrival-bg img {
-        width: 120px;
-        height: 120px;
+        width: 220px;
+        height: 220px;
         -webkit-transition: .3s linear;
         -moz-transition: .3s linear;
         -ms-transition: .3s linear;
@@ -1001,7 +1016,7 @@ p.arrival-review span {
     padding-right: 20px; 
 }
 .bg-dark {
-    background-color: #442a0e !important;
+    background-color: #66320e !important;
 }
 /*--------------------------------------------service-------------------------------*/
 /* Backgrounds */

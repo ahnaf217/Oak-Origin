@@ -1,0 +1,172 @@
+﻿@{
+    ViewData["Title"] = "Recycle Page";
+}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoFurniture - Sustainable Furniture Recycling</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <!--<header>
+        <nav class="container">
+            <div class="logo">EcoFurniture</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#process">Process</a></li>
+                <li><a href="#ideas">Ideas</a></li>
+                <li><a href="#community">Community</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>-->
+
+    <main>
+        <section class="hero" id="home">
+            <div class="container">
+                <div class="hero-content">
+                    <h1>Transform Your Old Furniture into Something New</h1>
+                    <p>Join thousands of eco-conscious individuals in giving furniture a second life through sustainable recycling and creative upcycling.</p>
+                    <a asp-controller="Recycling" asp-action="Index" class="btn btn-primary" style="background-color: #f9bf29; border-color: #f9bf29; color: #2f2f2f;">Start Recycling</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="process" id="process">
+            <div class="container">
+                <h2 class="section-title">How It Works</h2>
+                <div class="process-grid">
+                    <div class="process-card">
+                        <div class="process-icon">♻️</div>
+                        <h3>Assess & Sort</h3>
+                        <p>Evaluate your furniture's condition and determine the best recycling path. We help you identify what can be donated, repurposed, or recycled.</p>
+                    </div>
+                    <div class="process-card">
+                        <div class="process-icon">🔨</div>
+                        <h3>Repurpose & Upcycle</h3>
+                        <p>Transform old pieces into functional art. Our community shares creative ideas and step-by-step guides for amazing furniture makeovers.</p>
+                    </div>
+                    <div class="process-card">
+                        <div class="process-icon">🌱</div>
+                        <h3>Recycle Responsibly</h3>
+                        <p>For items beyond repair, we connect you with certified recycling centers that properly process materials and minimize environmental impact.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="upcycling" id="ideas">
+            <div class="container">
+                <h2 class="section-title">Upcycling Inspiration</h2>
+                <div class="ideas-grid">
+                    <div class="idea-card">
+                        <img src="@Url.Content("https://m.media-amazon.com/images/I/71yd5CblgBL.jpg")" alt="Dresser to Vanity" class="idea-image">
+                        <div class="idea-content">
+                            <h3>Dresser to Bathroom Vanity</h3>
+                            <p>Transform an old dresser into a stunning bathroom vanity with some plumbing modifications and a fresh coat of paint.</p>
+                        </div>
+                    </div>
+                    <div class="idea-card">
+                        <img src="@Url.Content("https://media.diy.com/is/image/KingfisherDigital/4-tier-wooden-plant-stand-ladder~5025912167585_03c_MP?$MOB_PREV$&$width=600&$height=600")" alt="Ladder Bookshelf" class="idea-image">
+                        <div class="idea-content">
+                            <h3>Ladder Plant Shelf</h3>
+                            <p>Give an old wooden ladder new life as a charming plant display shelf perfect for any room in your home.</p>
+                        </div>
+                    </div>
+                    <div class="idea-card">
+                        <img src="@Url.Content("https://odditymall.com/includes/content/upload/this-suitcase-cat-bunk-bed-is-a-brilliant-way-to-re-purpose-your-old-luggage-2969.jpg")" alt="Suitcase Pet Bed" class="idea-image">
+                        <div class="idea-content">
+                            <h3>Suitcase Pet Bed</h3>
+                            <p>Convert a vintage suitcase into a cozy and stylish bed for your furry friends with some cushioning and creativity.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="stats">
+            <div class="container">
+                <div class="stats-grid">
+                    <div class="stat">
+                        <span class="stat-number">12M</span>
+                        <div class="stat-label">Tons of Furniture Saved</div>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">50K+</span>
+                        <div class="stat-label">Active Community Members</div>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">85%</span>
+                        <div class="stat-label">Waste Reduction Rate</div>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">200+</span>
+                        <div class="stat-label">Partner Recycling Centers</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="community" id="community">
+            <div class="container">
+                <h2 class="section-title">Join Our Eco-Friendly Community</h2>
+                <div class="testimonials">
+                    <div class="testimonial">
+                        <p class="testimonial-text">"I transformed my grandmother's old wardrobe into a beautiful entertainment center. The community's guidance was invaluable!"</p>
+                        <div class="testimonial-author">- Sarah M.</div>
+                    </div>
+                    <div class="testimonial">
+                        <p class="testimonial-text">"Thanks to EcoFurniture, I've diverted over 20 pieces from landfills and created amazing new furniture for my home."</p>
+                        <div class="testimonial-author">- Mike R.</div>
+                    </div>
+                    <div class="testimonial">
+                        <p class="testimonial-text">"The recycling network helped me properly dispose of furniture I couldn't repurpose. Great environmental impact!"</p>
+                        <div class="testimonial-author">- Lisa K.</div>
+                    </div>
+                </div>
+                <div style="margin-top: 2rem;">
+                    <a href="#" class="btn">Join Our Community</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!--<footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <a href="#process">Recycling Process</a>
+                    <a href="#ideas">Upcycling Ideas</a>
+                    <a href="#community">Community</a>
+                    <a href="#">Find Recycling Centers</a>
+                </div>
+                <div class="footer-section">
+                    <h3>Resources</h3>
+                    <a href="#">DIY Guides</a>
+                    <a href="#">Video Tutorials</a>
+                    <a href="#">Material Safety</a>
+                    <a href="#">Environmental Impact</a>
+                </div>
+                <div class="footer-section">
+                    <h3>Connect</h3>
+                    <a href="#">Facebook Community</a>
+                    <a href="#">Instagram</a>
+                    <a href="#">YouTube Channel</a>
+                    <a href="#">Newsletter</a>
+                </div>
+                <div class="footer-section">
+                    <h3>Support</h3>
+                    <a href="#">Contact Us</a>
+                    <a href="#">FAQ</a>
+                    <a href="#">Partner With Us</a>
+                    <a href="#">Donate</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 EcoFurniture. Making sustainability accessible to everyone.</p>
+            </div>
+        </div>
+    </footer>-->
+</body>

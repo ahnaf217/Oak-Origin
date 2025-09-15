@@ -1,0 +1,12 @@
+﻿.nav-link.active {
+    background-color: #ffffff; /* pick your color */
+    color: #fff !important; /* keep text visible */
+    border-radius: 6px; /* optional rounded corners */
+    padding: 8px 16px; /* optional extra spacing */
+}
+
+/* Hover effect (optional) */
+.nav-link:hover {
+    background-color: #ffffff;
+    color: #fff !important;
+}

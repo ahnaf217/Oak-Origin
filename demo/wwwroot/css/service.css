@@ -1,0 +1,140 @@
+﻿
+.page-header {
+    background-color: #542809; 
+    color: #fff; 
+    padding: 40px 20px;
+    text-align: center;
+    border-radius: 8px; 
+    margin-bottom: 40px;
+}
+
+    .page-header h1 {
+        margin: 0;
+        font-size: 2rem;
+        font-weight: 700;
+    }
+
+    .page-header .breadcrumb {
+        margin-top: 10px;
+        font-size: 0.95rem;
+        color: #f0e6e6; /* lighter text for breadcrumb */
+    }
+.breadcrumb-light a {
+    color: #ffb600; /* yellow color */
+    text-decoration: none; /* optional: remove underline */
+}
+
+    .breadcrumb-light a:hover {
+        text-decoration: underline; /* optional hover effect */
+    }
+
+        .page-header .breadcrumb a {
+            color: #f0e6e6;
+            text-decoration: none;
+        }
+
+            .page-header .breadcrumb a:hover {
+                text-decoration: underline;
+            }
+/* -----------------------------
+   SERVICE CARDS
+------------------------------- */
+.service-card {
+    background-color: #fdf8f3; /* subtle off-white background */
+    border-radius: 12px;
+    padding: 25px 20px;
+    text-align: center;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+    .service-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+    }
+
+    .service-card .icon-circle {
+        width: 60px;
+        height: 60px;
+        line-height: 60px;
+        background-color: #fff; /* keep icon background white */
+        color: #8b4513; /* dark brown accent for icons */
+        border-radius: 50%;
+        margin: 0 auto 15px;
+        font-size: 1.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .service-card h5 {
+        font-weight: 600;
+        margin-bottom: 10px;
+        color: #333;
+    }
+
+    .service-card p.custom-text {
+        color: #555;
+        font-size: 0.95rem;
+        margin-bottom: 15px;
+    }
+
+/* -----------------------------
+   HOW IT WORKS SECTION
+------------------------------- */
+.step-item {
+    background-color: #fdf8f3; /* match service cards */
+    border-radius: 12px;
+    padding: 30px 20px;
+    text-align: center;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+    margin-bottom: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+    .step-item:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+    }
+
+.badge-step {
+    display: inline-block;
+    font-weight: bold;
+    color: #fff;
+    background-color: #ffb600; /* yellow accent */
+    width: 45px;
+    height: 45px;
+    line-height: 45px;
+    border-radius: 50%;
+    margin-bottom: 15px;
+    font-size: 18px;
+}
+
+.step-item h6 {
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: #333;
+    font-size: 1.1rem;
+}
+
+.step-item p.custom-text {
+    color: #555;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .service-card,
+    .step-item {
+        padding: 20px 15px;
+    }
+
+    .badge-step {
+        width: 40px;
+        height: 40px;
+        line-height: 40px;
+        font-size: 16px;
+    }
+}

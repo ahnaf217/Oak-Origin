@@ -1,5 +1,6 @@
-﻿@using demo.ViewModels;
-@model ProductViewModels;
+﻿
+@model List<demo.Models.Product>
+
 @{
 	ViewData["Title"] = "Shop";
 }
@@ -26,12 +27,16 @@
 <body>
 
 	<!-- Start Hero Section -->
-	<div class="hero">
+	<div class="hero-other">
 		<div class="container">
 			<div class="row justify-content-between">
 				<div class="col-lg-5">
 					<div class="intro-excerpt">
-						<h1>Shop</h1>
+						@* <h1>@ViewBag.Title</h1> *@
+						<h1 class="page-title">@ViewBag.Title</h1>
+						<p class="page-subtitle">
+							Explore our latest collections and find the perfect products that match your style and needs.
+						</p>
 					</div>
 				</div>
 				<div class="col-lg-7">
@@ -48,12 +53,24 @@
 				<!--new-arrivals start -->
 				<section id="new-arrivals" class="new-arrivals">
 					<div class="container">
-						<div class="section-header">
-							<!--<h2>new arrivals</h2>-->
-						</div>
+						<form asp-action="shop" method="get" class="row gx-3 gy-2 align-items-center justify-content-center">
+							<div class="col-sm-3">
+								<label class="visually-hidden" for="category">category</label>
+								<select name="categoryid" class="form-select" id="category" asp-items="@ViewBag.Categories">
+									<option selected value="">Select Category</option>
+									
+									</select>
+							</div>
+
+							<div class="col-auto">
+                                <button type="submit" class="btn btn-primary">Filter</button>
+							</div>
+						</form>		
+					</div>
+
 						<div class="new-arrivals-content">
 							<div class="row">
-								@foreach (var product in Model.Products)
+								@foreach (var product in Model)
 								{
 									<div class="col-md-3 col-sm-4">
 										<div class="single-new-arrival">
@@ -61,9 +78,9 @@
 												<img src="@Url.Content(product.Image)" alt="@product.Name">
 
 												<div class="single-new-arrival-bg-overlay"></div>
-												<div class="sale bg-1">
-													<p>sale</p>
-												</div>
+											<!--<div class="sale bg-1">
+												<p>sale</p>
+												</div>-->
 												<div class="new-arrival-cart">
 													<p>
 														<span class="lnr lnr-cart"></span>
@@ -76,8 +93,8 @@
 													</p>
 												</div>
 											</div>
-											<h4><a href="#">@product.Name</a></h4>
-											<p class="arrival-product-price">$@product.Price</p>
+											<h4><a asp-controller="Home" asp-action="ProductDetails" asp-route-id="@product.Id">@product.Name</a></h4>
+										<p class="arrival-product-price">৳@product.Price</p>
 										</div>
 									</div>
 								}	

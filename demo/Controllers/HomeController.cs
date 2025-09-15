@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.Mvc;
 using demo.Data;
 using Microsoft.EntityFrameworkCore;
 using demo.ViewModels;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace demo.Controllers
 {
@@ -22,9 +24,22 @@ namespace demo.Controllers
             _logger = logger;
         }*/
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            var products = await _context.Products.ToListAsync();
+            var sliderImages = await _context.SliderImages
+                .OrderBy(si => si.SortOrder)
+                .ToListAsync();
+
+            var categories = await _context.Categories.ToListAsync();
+
+            var model = new HomeViewModel
+            {
+                Products = products,
+                SliderImages = sliderImages,
+                Categories = categories
+            };
+            return View(model);
         }
 
         public IActionResult Privacy()
@@ -32,13 +47,42 @@ namespace demo.Controllers
             return View();
         }
 
-        public async Task<IActionResult> shop()
+        public async Task<IActionResult> Shop(int? categoryid)
         {
-            var products = await _context.Products.ToListAsync();
-            var model = new ProductViewModels { Products = products };
-            
-            return View(model);
+            var title = "All Products";
+
+
+            var productsQuery = _context.Products
+                .Include(p => p.Category) // include category data
+                .AsQueryable();
+
+            if (categoryid != null)
+            {
+                productsQuery = productsQuery.Where(p => p.CategoryId == categoryid);
+
+                var category = await _context.Categories.FirstOrDefaultAsync(c => c.Id == categoryid);
+
+                if (category != null)
+                {
+                    title = $"{category.Name}s";
+                }
+            }
+
+            var categories = await _context.Categories.ToListAsync();
+            ViewBag.Categories = new SelectList(categories, "Id", "Name", categoryid);
+
+            ViewBag.Title = title;
+
+            var products = await productsQuery.ToListAsync();
+
+            /*var model = new ProductViewModels
+            {
+                Products = products
+            };*/
+
+            return View(products);
         }
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
@@ -59,9 +103,24 @@ namespace demo.Controllers
             return View();
         }
 
+
         public IActionResult Terms()
         {
             return View();
+        }
+
+
+
+        public async Task<IActionResult> ProductDetails(int id)
+        {
+            var product = await _context.Products
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if(product == null)
+            {
+                return NotFound();
+            }
+
+                return View(product);
         }
 
 

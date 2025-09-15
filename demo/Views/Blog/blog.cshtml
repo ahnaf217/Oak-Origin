@@ -1,0 +1,48 @@
+﻿@using demo.Helpers;
+@model IEnumerable<demo.Models.Post>
+@{
+    ViewData["Title"] = "Our Blog";
+    Layout = "~/Views/Shared/_Layout.cshtml"; 
+}
+
+<section class="blog-header">
+    <h2>Our Blog</h2>
+    <p>Home / Blog</p>
+</section>
+
+<section class="blog-list">
+    <div class="container">
+        <div class="blog-grid">
+
+            @foreach(var post in Model){
+            <!-- Blog Item 1 -->
+            <div class="blog-card">
+                <div class="blog-img">
+                        <img src="@post.FeatureImagePath" alt="@post.Title" class="img-fluid" />
+                    <span class="blog-date">@post.PublishedDate</span>
+                </div>
+                <div class="blog-content">
+                    <h3>@post.Title</h3>
+                        @{
+                            var content = RemoveHtmlTagHelper.RemoveHtmlTags(post.Content);
+                    }
+                    <p>@(content.Length>100 ? content.Substring(0, 100) + "...": content)</p>
+                    <a asp-controller="Blog" asp-action="Details" asp-route-id="@post.Id" class="read-more">Read More</a>
+                </div>
+            </div>
+            }
+
+            
+
+        </div>
+
+        <!-- Pagination -->
+        <div class="pagination">
+            <a href="#">«</a>
+            <a href="#" class="active">1</a>
+            <a href="#">2</a>
+            <a href="#">3</a>
+            <a href="#">»</a>
+        </div>
+    </div>
+</section>

@@ -1,4 +1,6 @@
-﻿@{
+﻿@using demo.ViewModels
+@model HomeViewModel
+@{
 	Layout = "~/Views/Shared/_Layout.cshtml";
     ViewData["Title"] = "Home Page";
 }
@@ -29,31 +31,68 @@
 	
 	<!-- End Header/Navigation -->
 	<!-- --------------------------------Start Hero Section ---------------->
-	<div class="hero">
-		<div class="container">
-			<div class="row justify-content-between">
-				<div class="col-lg-5">
-					<div class="intro-excerpt">
-						<h1>Modern Interior <span clsas="d-block">Design Studio</span></h1>
-						<p class="mb-4">
-							We design and craft premium furniture for modern homes and offices.
-							Transform your living space with stylish, comfortable, and timeless designs.
-						</p>
-						<p><a href="" class="btn btn-secondary me-2">Shop Now</a><a href="#" class="btn btn-white-outline">Explore</a></p>
+
+	<!-- Slider main container -->
+	<div class="swiper">
+		<!-- Additional required wrapper -->
+		<div class="swiper-wrapper">
+			@foreach(var slide in Model.SliderImages)
+			{
+				<!-- Slide 1 (Hero Section) -->
+				<div class="swiper-slide">
+					<div class="hero">
+						<div class="container">
+							<div class="row justify-content-between">
+								<div class="col-lg-5">
+									<div class="intro-excerpt">
+										<h1>Modern Interior <span class="d-block">Design Studio</span></h1>
+										<p class="mb-4">
+											We design and craft premium furniture for modern homes and offices.
+											Transform your living space with stylish, comfortable, and timeless designs.
+										</p>
+										<p>
+											<a href="" class="btn btn-secondary me-2">Shop Now</a>
+											<a href="#" class="btn btn-white-outline">Explore</a>
+										</p>
+									</div>
+								</div>
+								<div class="col-lg-7">
+									<div class="hero-img-wrap">
+										<img src="@slide.Image" class="img-fluid" alt="Slider Images" width="800" height="500">
+
+									</div>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
-				<div class="col-lg-7">
-					<div class="hero-img-wrap">
-						<img src="images/white sofa.png" class="img-fluid">
-					</div>
-				</div>
-			</div>
+				
+			}
+
+			
+
+			
+
+			
+
 		</div>
+
+		<!-- If we need pagination -->
+		<div class="swiper-pagination"></div>
+
+		<!-- If we need navigation buttons -->
+		<div class="swiper-button-prev"></div>
+		<div class="swiper-button-next"></div>
+
+		<!-- If we need scrollbar -->
+		<div class="swiper-scrollbar"></div>
 	</div>
+
 	
 	<!-------------------------------------- Start Product Section ------------------>
 	<div class="product-section">
 		<div class="container">
+			
 			<div class="row">
 
 				<!------------------------------------- Start Column 1 ---------------------------->
@@ -251,12 +290,44 @@
 		</div>
 	</div>
 	<!-- End Popular Product -->
+
+	<h3 class="category-header text-center mb-4">Shop by Categories</h3>
+	<div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+
+
+		@foreach (var category in Model.Categories)
+		{
+			<div class="col mb-5">
+				<div class="card h-100">
+					<!-- Sale badge-->
+					@* <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale</div> *@
+					<!-- Product image-->
+					<img class="card-img-top" src="@category.Image" alt="@category.Name" />
+					<!-- Product details-->
+					<div class="card-body p-4">
+						<div class="text-center">
+							<!-- Product name-->
+							<h5 class="fw-bolder">
+								<a asp-controller="Home" asp-action="shop" asp-route-categoryid="@category.Id">
+									@category.Name
+								</a>
+							</h5>
+
+						</div>
+					</div>
+					<!-- Product actions-->
+
+				</div>
+			</div>
+		}
+
+	</div>
 	<!-- Start Testimonial Slider -->
 	<div class="testimonial-section">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-7 mx-auto text-center">
-					<h2 class="section-title">Testimonials</h2>
+					<h2 class="section-title">Our Furnitures</h2>
 				</div>
 			</div>
 
@@ -282,10 +353,10 @@
 
 											<div class="author-info">
 												<div class="author-pic">
-													<img src="images/person-1.png" alt="Maria Jones" class="img-fluid">
+													<img src="images/product-1.png" alt="Wooden chair" class="img-fluid">
 												</div>
-												<h3 class="font-weight-bold">Maria Jones</h3>
-												<span class="position d-block mb-3">Interior Designer</span>
+												<h3 class="font-weight-bold">Wooden chair</h3>
+												<span class="position d-block mb-3">Luxury Design</span>
 											</div>
 										</div>
 
@@ -305,10 +376,10 @@
 
 											<div class="author-info">
 												<div class="author-pic">
-													<img src="images/person-1.png" alt="Maria Jones" class="img-fluid">
+													<img src="images/product-2.png" alt="Blue single sofa" class="img-fluid">
 												</div>
-												<h3 class="font-weight-bold">Robert Fox</h3>
-												<span class="position d-block mb-3">Homeowner</span>
+												<h3 class="font-weight-bold">Blue single sofa</h3>
+												<span class="position d-block mb-3">Comfort Design</span>
 											</div>
 										</div>
 
@@ -328,10 +399,10 @@
 
 											<div class="author-info">
 												<div class="author-pic">
-													<img src="images/person-1.png" alt="Maria Jones" class="img-fluid">
+													<img src="images/product-3.png" alt="Study Chair" class="img-fluid">
 												</div>
-												<h3 class="font-weight-bold">Kristin Watson </h3>
-												<span class="position d-block mb-3">Freelancer</span>
+												<h3 class="font-weight-bold">Study Chair </h3>
+												<span class="position d-block mb-3">Study Chair</span>
 											</div>
 										</div>
 
@@ -413,3 +484,35 @@
 </body>
 
 </html>
+
+@section Styles {
+	<link rel="stylesheet"
+		  href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css" />
+}
+
+@section Scripts {
+	<script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
+	<script>
+				const swiper = new Swiper('.swiper', {
+		  // Optional parameters
+		 
+		  loop: true,
+
+		  // If we need pagination
+		  pagination: {
+			el: '.swiper-pagination',
+		  },
+
+		  // Navigation arrows
+		  navigation: {
+			nextEl: '.swiper-button-next',
+			prevEl: '.swiper-button-prev',
+		  },
+
+		  // And if we need scrollbar
+		  scrollbar: {
+			el: '.swiper-scrollbar',
+		  },
+		});
+	</script>
+}

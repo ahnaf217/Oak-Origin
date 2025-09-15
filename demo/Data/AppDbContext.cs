@@ -19,6 +19,19 @@ namespace demo.Data
         public DbSet<Order> Orders { get; set; }
 
         public DbSet<OrderProduct> OrderProducts { get; set; }
+
+        public DbSet<Category> Categories { get; set; }
+
+        public DbSet<SliderImage> SliderImages { get; set; }
+
+        public DbSet<RecyclingRequest> RecyclingRequests { get; set; }
+
+        public DbSet<Post> Posts { get; set; }
+
+        public DbSet<Comment> Comments { get; set; } 
+
+        
+
     }
     
     
