@@ -3,35 +3,41 @@
     var product = ViewBag.Product as demo.Models.Product;
 }
 
-<h1>Recycle: @product.Name</h1>
+<div class="container py-5">
+    <div class="card shadow-sm mx-auto" style="max-width: 600px;">
+        <div class="card-body">
+            <h2 class="card-title mb-4 text-center">Recycle: @product.Name</h2>
 
-<form asp-action="SubmitRequest" method="post">
-    <div asp-validation-summary="All" class="text-danger"></div>
-    <input type="hidden" asp-for="ProductId" />
+            <form asp-action="SubmitRequest" method="post">
+                <div asp-validation-summary="All" class="text-danger mb-3"></div>
+                <input type="hidden" asp-for="ProductId" />
 
-    <div class="form-group mb-3">
-        <label asp-for="CustomerName">Full Name</label>
-        <input asp-for="CustomerName" class="form-control" />
-        <span asp-validation-for="CustomerName" class="text-danger"></span>
+                <div class="form-group mb-3">
+                    <label asp-for="CustomerName" class="form-label">Full Name</label>
+                    <input asp-for="CustomerName" class="form-control" />
+                    <span asp-validation-for="CustomerName" class="text-danger"></span>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label asp-for="ContactEmail" class="form-label">Email</label>
+                    <input asp-for="ContactEmail" type="email" class="form-control" />
+                    <span asp-validation-for="ContactEmail" class="text-danger"></span>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label asp-for="PickupAddress" class="form-label">Pickup Address</label>
+                    <textarea asp-for="PickupAddress" class="form-control" rows="3"></textarea>
+                    <span asp-validation-for="PickupAddress" class="text-danger"></span>
+                </div>
+
+                <div class="d-grid">
+                    <button type="submit" class="btn btn-primary">Submit Recycling Request</button>
+                </div>
+            </form>
+        </div>
     </div>
-
-    <div class="form-group mb-3">
-        <label asp-for="ContactEmail">Email</label>
-        <input asp-for="ContactEmail" type="email" class="form-control" />
-        <span asp-validation-for="ContactEmail" class="text-danger"></span>
-    </div>
-
-    <div class="form-group mb-3">
-        <label asp-for="PickupAddress">Pickup Address</label>
-        <textarea asp-for="PickupAddress" class="form-control" rows="3"></textarea>
-        <span asp-validation-for="PickupAddress" class="text-danger"></span>
-    </div>
-
-    <button type="submit" class="btn btn-primary">Submit Recycling Request</button>
-</form>
+</div>
 
 @section Scripts {
-    @{
-        await Html.RenderPartialAsync("_ValidationScriptsPartial");
-    }
+    @await Html.PartialAsync("_ValidationScriptsPartial")
 }

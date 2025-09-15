@@ -5,40 +5,53 @@
     Layout = "_AdminLayout";
 }
 
-<h1>Recycling Requests</h1>
+<div class="container py-5">
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <h2 class="card-title mb-4">Recycling Requests</h2>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>Product</th>
-            <th>Customer</th>
-            <th>Status</th>
-            <th>Store Credit</th>
-            <th>Actions</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>@item.Product.Name</td>
-                <td>@item.CustomerName</td>
-                <td>@item.Status</td>
-                <td>$@item.StoreCreditAmount</td>
-                <td>
-                    @if (item.Status == "Pending")
-                    {
-                        <form asp-action="Approve" method="post" class="d-inline">
-                            <input type="hidden" name="id" value="@item.Id" />
-                            <button type="submit" class="btn btn-success btn-sm">Approve</button>
-                        </form>
-                    }
-                    else if (item.Status == "Approved")
-                    {
-                        <span>Credit Code: **@item.StoreCreditCode**</span>
-                    }
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
+            <div class="table-responsive">
+                <table class="table table-striped table-hover">
+                    <thead class="table-light">
+                        <tr>
+                            <th>Product</th>
+                            <th>Customer</th>
+                            <th>Status</th>
+                            <th>Store Credit</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.Product.Name</td>
+                                <td>@item.CustomerName</td>
+                                <td>@item.Status</td>
+                                <td>
+                                    @if (item.Status == "Approved")
+                                    {
+                                        <span>Credit Code: *@item.StoreCreditCode*</span>
+                                    }
+                                </td>
+                                <td>
+                                    @if (item.Status == "Pending")
+                                    {
+                                        <form asp-action="Approve" method="post" class="d-inline">
+                                            <input type="hidden" name="id" value="@item.Id" />
+                                            <button type="submit" class="btn btn-success btn-sm">Approve</button>
+                                        </form>
+                                    }
+                                    else if (item.Status == "Approved")
+                                    {
+                                        <span>Credit Code: <strong>@item.StoreCreditCode</strong></span>
+                                    }
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

@@ -10,75 +10,63 @@
             </div>
         </div>
     </header>-->
-
 }
 
-<div class="row g-5">
-    <!-- Product Images -->
-    <div class="col-lg-6">
-        <div class="product-gallery">
-            <img src="@Model.Image" id="main_product_image" width="350">
+<<div class="container py-5">
+    <div class="row g-5">
+        <!-- Product Images -->
+        <div class="col-lg-6">
+            <div class="product-gallery">
+                <img src="@Model.Image" id="main_product_image" class="product-image w-100">
 
-            
+                <!-- Thumbnail images -->
+
+            </div>
         </div>
-    </div>
 
-    <!-- Product Details -->
-    <div class="col-lg-6">
-        <div class="product-details">
-            <!-- Product Title -->
-            <h1 class="display-5 fw-bold text-dark mb-3">
-                @Model.Name
-            </h1>
+        <!-- Product Details -->
+        <div class="col-lg-6">
+            <div class="product-details">
+                <!-- Product Title -->
+                <h1 class="display-5 fw-bold text-dark mb-3">@Model.Name</h1>
 
-            
-
-            <!-- Price Section -->
-            <div class="price-section">
-                <div class="d-flex align-items-center">
-                    <span class="h2 text-danger fw-bold me-3">$@Model.Price</span>
-                    
-                </div>
-                <small class="text-muted">Free shipping on orders over $50</small>
-            </div>
-
-            <!-- Product Description -->
-            <div class="mb-4">
-                <h5 class="fw-semibold mb-3" style="color: black;">Product Description</h5>
-                <p class="text-muted">
-                    @Model.Description
-                </p>
-            </div>
-
-            
-
-            
-
-            <!-- Quantity and Add to Cart -->
-            <div class="d-flex align-items-center gap-3 mb-4">
-                <div class="flex-grow-1">
-                    <div class=""> <a asp-controller="Cart" asp-action="AddToCart" asp-route-productId="@Model.Id" class="btn btn-outline-dark mt-auto">Add to Cart</a> </div>
-                </div>
-            </div>
-
-
-            <!-- Product Info -->
-            <div class="border-top pt-4">
-                <div class="row text-center">
-                    <div class="col-4">
-                        <i class="fas fa-truck text-success fs-4 mb-2"></i>
-                        <p class="small mb-0 fw-semibold">Free Shipping</p>
-                        <p class="small text-muted">On orders over $50</p>
+                <!-- Price Section -->
+                <div class="price-section">
+                    <div class="d-flex align-items-center">
+                        <span class="h2 text-danger fw-bold me-3">৳@Model.Price</span>
                     </div>
-                    <div class="col-4">
-                        <i class="fas fa-undo text-primary fs-4 mb-2"></i>
-                        <p class="small mb-0 fw-semibold">30-Day Returns</p>
-                        <p class="small text-muted">Hassle-free returns</p>
-                    </div>
-                    <div class="col-4">
-                        <i class="fas fa-shield-alt text-warning fs-4 mb-2"></i>
-                        <p class="small mb-0 fw-semibold">2-Year Warranty</p>
-                        <p class="small text-muted">Full coverage</p>
+                    <small class="text-black">Free shipping on orders over $50</small>
+                </div>
+
+                <!-- Product Description -->
+                <div class="mb-4">
+                    <h5 class="fw-semibold mb-3" style="color: black;">Product Description</h5>
+                    <p class="text-black">@Model.Description</p>
+                </div>
+
+                <!-- Add to Cart -->
+                <div class="d-flex align-items-center gap-3 mb-4">
+                    <a asp-controller="Cart" asp-action="AddToCart" asp-route-productId="@Model.Id" class="btn btn-add-cart">Add to Cart</a>
+                </div>
+
+                <!-- Product Info -->
+                <div class="border-top pt-4">
+                    <div class="row text-center">
+                        <div class="col-4">
+                            <i class="fas fa-truck text-success fs-4 mb-2"></i>
+                            <p class="small mb-0 fw-semibold">Free Shipping</p>
+                            <p class="small text-muted">On orders over ৳50</p>
+                        </div>
+                        <div class="col-4">
+                            <i class="fas fa-undo text-primary fs-4 mb-2"></i>
+                            <p class="small mb-0 fw-semibold">30-Day Returns</p>
+                            <p class="small text-muted">Hassle-free returns</p>
+                        </div>
+                        <div class="col-4">
+                            <i class="fas fa-shield-alt text-warning fs-4 mb-2"></i>
+                            <p class="small mb-0 fw-semibold">2-Year Warranty</p>
+                            <p class="small text-muted">Full coverage</p>
+                        </div>
                     </div>
                 </div>
             </div>
