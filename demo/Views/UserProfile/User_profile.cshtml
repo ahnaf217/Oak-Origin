@@ -1,49 +1,176 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model Users
 @{
     ViewData["Title"] = "User Profile";
-
+    
 }
-<div class="container rounded bg-white mt-5 mb-5">
-    <div class="row">
-        <div class="col-md-3 border-right">
-            <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"><span class="font-weight-bold">Edogaru</span><span class="text-black-50">edogaru@mail.com.my</span><span> </span></div>
-        </div>
-        <div class="col-md-5 border-right">
-            <div class="p-3 py-5">
-                <div class="d-flex justify-content-between align-items-center mb-3">
-                    <h4 class="text-right">Profile Settings</h4>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile - John Doe</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="~/css/style.css" asp-append-version="true" />
+    <style>
+        .profile-header {
+            background: linear-gradient(135deg, #8B4513 0%, #A0522D 100%); /* SaddleBrown to sienna */
+            color: white;
+            padding: 2rem 0;
+        }
+
+        .profile-avatar {
+            width: 120px;
+            height: 120px;
+            border: 4px solid white;
+            box-shadow: 0 4px 15px rgba(139, 69, 19, 0.3); /* saddle brown shadow */
+        }
+
+        .form-control:focus {
+            border-color: #8B4513;
+            box-shadow: 0 0 0 0.2rem rgba(139, 69, 19, 0.25);
+        }
+
+        .btn-save {
+            background: linear-gradient(45deg, #8B4513, #A0522D); /* saddle brown → sienna */
+            border: none;
+            color: white;
+        }
+
+            .btn-save:hover {
+                background: linear-gradient(45deg, #7A3E12, #933D20); /* darker brown shades */
+                color: white;
+            }
+
+    </style>
+</head>
+<body class="bg-light">
+    <!-- Profile Header -->
+    <div class="profile-header">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-3 text-center">
+                    <img src="https://img.freepik.com/premium-vector/vector-flat-illustration-grayscale-avatar-user-profile-person-icon-gender-neutral-silhouette-profile-picture-suitable-social-media-profiles-icons-screensavers-as-templatex9xa_719432-2191.jpg"
+                         alt="Profile Picture"
+                         class="rounded-circle profile-avatar">
                 </div>
-                <div class="row mt-2">
-                    <div class="col-md-6"><label class="labels">Name</label><input type="text" class="form-control" placeholder="first name" value=""></div>
-                    <div class="col-md-6"><label class="labels">Surname</label><input type="text" class="form-control" value="" placeholder="surname"></div>
+                <div class="col-md-9">
+                    <!--  Display only name and email as static information -->
+                    <h1 class="mb-2">@Model.FullName</h1>
+                    <p class="lead mb-0">
+                        <i class="fas fa-envelope me-2"></i>@Model.Email
+                    </p>
                 </div>
-                <div class="row mt-3">
-                    <div class="col-md-12"><label class="labels">Mobile Number</label><input type="text" class="form-control" placeholder="enter phone number" value=""></div>
-                    <div class="col-md-12"><label class="labels">Address Line 1</label><input type="text" class="form-control" placeholder="enter address line 1" value=""></div>
-                    <div class="col-md-12"><label class="labels">Address Line 2</label><input type="text" class="form-control" placeholder="enter address line 2" value=""></div>
-                    <div class="col-md-12"><label class="labels">Postcode</label><input type="text" class="form-control" placeholder="enter address line 2" value=""></div>
-                    <div class="col-md-12"><label class="labels">State</label><input type="text" class="form-control" placeholder="enter address line 2" value=""></div>
-                    <div class="col-md-12"><label class="labels">Area</label><input type="text" class="form-control" placeholder="enter address line 2" value=""></div>
-                    <div class="col-md-12"><label class="labels">Email ID</label><input type="text" class="form-control" placeholder="enter email id" value=""></div>
-                    <div class="col-md-12"><label class="labels">Education</label><input type="text" class="form-control" placeholder="education" value=""></div>
-                </div>
-                <div class="row mt-3">
-                    <div class="col-md-6"><label class="labels">Country</label><input type="text" class="form-control" placeholder="country" value=""></div>
-                    <div class="col-md-6"><label class="labels">State/Region</label><input type="text" class="form-control" value="" placeholder="state"></div>
-                </div>
-                <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="button">Save Profile</button></div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="p-3 py-5">
-                <div class="d-flex justify-content-between align-items-center experience"><span>Edit Experience</span><span class="border px-3 p-1 add-experience"><i class="fa fa-plus"></i>&nbsp;Experience</span></div><br>
-                <div class="col-md-12"><label class="labels">Experience in Designing</label><input type="text" class="form-control" placeholder="experience" value=""></div> <br>
-                <div class="col-md-12"><label class="labels">Additional Details</label><input type="text" class="form-control" placeholder="additional details" value=""></div>
             </div>
         </div>
     </div>
-</div>
-</div>
-</div>
+
+    <div class="container mt-4">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <!--  Profile Information Form for editable fields -->
+                <div class="card border-0 shadow-sm">
+                    <div class="card-header bg-white border-0">
+                        <h5 class="mb-0">
+                            <i class="fas fa-user-edit me-2 text-primary"></i>Profile Information
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <form id="profileForm">
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="phone" class="form-label">
+                                        <i class="fas fa-phone me-2"></i>Phone Number
+                                    </label>
+                                    <input type="tel" class="form-control" id="phone"
+                                           placeholder="Enter your phone number">
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="dateOfBirth" class="form-label">
+                                        <i class="fas fa-calendar-alt me-2"></i>Date of Birth
+                                    </label>
+                                    <input type="date" class="form-control" id="dateOfBirth">
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="address" class="form-label">
+                                    <i class="fas fa-map-marker-alt me-2"></i>Address
+                                </label>
+                                <textarea class="form-control" id="address" rows="3"
+                                          placeholder="Enter your full address"></textarea>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="city" class="form-label">
+                                        <i class="fas fa-city me-2"></i>City
+                                    </label>
+                                    <input type="text" class="form-control" id="city"
+                                           placeholder="Enter your city">
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="country" class="form-label">
+                                        <i class="fas fa-globe me-2"></i>Country
+                                    </label>
+                                    <select class="form-select" id="country">
+                                        <option value="">Select your country</option>
+                                        <option value="US">United States</option>
+                                        <option value="CA">Canada</option>
+                                        <option value="UK">United Kingdom</option>
+                                        <option value="AU">Australia</option>
+                                        <option value="DE">Germany</option>
+                                        <option value="FR">France</option>
+                                        <option value="JP">Japan</option>
+                                        <option value="IN">India</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="bio" class="form-label">
+                                    <i class="fas fa-user me-2"></i>Bio
+                                </label>
+                                <textarea class="form-control" id="bio" rows="4"
+                                          placeholder="Tell us about yourself..."></textarea>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="website" class="form-label">
+                                        <i class="fas fa-link me-2"></i>Website
+                                    </label>
+                                    <input type="url" class="form-control" id="website"
+                                           placeholder="https://yourwebsite.com">
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="linkedin" class="form-label">
+                                        <i class="fab fa-linkedin me-2"></i>LinkedIn Profile
+                                    </label>
+                                    <input type="url" class="form-control" id="linkedin"
+                                           placeholder="https://linkedin.com/in/yourprofile">
+                                </div>
+                            </div>
+
+                            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                <button type="button" class="btn btn-outline-secondary me-md-2" onclick="clearForm()">
+                                    <i class="fas fa-undo me-2"></i>Clear
+                                </button>
+                                <button type="submit" class="btn btn-save">
+                                    <i class="fas fa-save me-2"></i>Save Profile
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!--  Success message area -->
+                <div id="successMessage" class="alert alert-success mt-3 d-none" role="alert">
+                    <i class="fas fa-check-circle me-2"></i>
+                    Profile information saved successfully!
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+</body>

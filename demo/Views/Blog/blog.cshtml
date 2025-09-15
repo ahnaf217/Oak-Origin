@@ -1,4 +1,5 @@
-﻿@model IEnumerable<demo.Models.Post>
+﻿@using demo.Helpers;
+@model IEnumerable<demo.Models.Post>
 @{
     ViewData["Title"] = "Our Blog";
     Layout = "~/Views/Shared/_Layout.cshtml"; 
@@ -22,8 +23,11 @@
                 </div>
                 <div class="blog-content">
                     <h3>@post.Title</h3>
-                    <p>@post.Content</p>
-                    <a href="#" class="read-more">Read More</a>
+                        @{
+                            var content = RemoveHtmlTagHelper.RemoveHtmlTags(post.Content);
+                    }
+                    <p>@(content.Length>100 ? content.Substring(0, 100) + "...": content)</p>
+                    <a asp-controller="Blog" asp-action="Details" asp-route-id="@post.Id" class="read-more">Read More</a>
                 </div>
             </div>
             }

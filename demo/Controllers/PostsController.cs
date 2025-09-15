@@ -188,5 +188,19 @@ namespace demo.Controllers
             }
             return RedirectToAction(nameof(Index));
         }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public JsonResult AddComment([FromBody]Comment comment)
+        {
+            comment.CommentDate = DateTime.Now;
+            _context.Comments.Add(comment);
+            _context.SaveChanges();
+
+            return Json(new 
+            { username = comment.UserName,
+            commentDate = comment.CommentDate.ToString("yyyy-MM-dd HH:mm"),
+            content = comment.Content
+            });
+        }
     }
 }

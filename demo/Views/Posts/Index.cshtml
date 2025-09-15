@@ -1,7 +1,9 @@
-﻿@model IEnumerable<demo.Models.Post>
+﻿@using demo.Helpers
+@model IEnumerable<demo.Models.Post>
 
 @{
     ViewData["Title"] = "Index";
+    Layout = "_AdminLayout";
 }
 
 <h1>Index</h1>
@@ -27,7 +29,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.PublishedDate)
             </th>
-            <th></th>
+            <th>Actions</th>
         </tr>
     </thead>
     <tbody>
@@ -37,7 +39,10 @@
                 @Html.DisplayFor(modelItem => item.Title)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Content)
+                    @{
+                        var content = RemoveHtmlTagHelper.RemoveHtmlTags(item.Content);
+                    }
+                    @(content.Length>100 ? content.Substring(0, 100) + "...": content)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Author)

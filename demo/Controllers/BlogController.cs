@@ -20,5 +20,19 @@ namespace demo.Controllers
 
             return View(posts); // ✅ pass list to the view
         }
+
+        [HttpGet]
+        public async Task<IActionResult> Details(int? id)
+        {
+            if (id == null) return NotFound();
+
+            var post = await _context.Posts
+                                     .Include(p => p.Comments)
+                                     .FirstOrDefaultAsync(m => m.Id == id);
+
+            if (post == null) return NotFound();
+
+            return View(post);
+        }
     }
 }
