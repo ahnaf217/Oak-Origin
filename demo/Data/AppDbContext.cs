@@ -26,6 +26,12 @@ namespace demo.Data
 
         public DbSet<RecyclingRequest> RecyclingRequests { get; set; }
 
+        public DbSet<Post> Posts { get; set; }
+
+        public DbSet<Comment> Comments { get; set; } 
+
+        
+
     }
     
     
